@@ -38,7 +38,7 @@ class PileupWeight(object):
         self.data = None
         
         for filename in datafiles:
-            file = root_open(filename)
+            file = ROOT.TFile.Open(filename)
             pu = file.Get('pileup')
             if self.data is None:
                 self.data = pu.Clone()
@@ -48,11 +48,11 @@ class PileupWeight(object):
             file.Close()
         # Normalize
         self.data.Scale(1./self.data.Integral())
-        print 'scaling data'
+        #print 'scaling data'
         if not mctag in _MC_PU_DISTRIBUTIONS:
             raise KeyError("Unknown PU distribution %s, allowed: %s" %
                            (mctag, " ".join(_MC_PU_DISTRIBUTIONS.keys())))
-        mc_file =root_open(_MC_PU_DISTRIBUTIONS[mctag])
+        mc_file = ROOT.TFile.Open(_MC_PU_DISTRIBUTIONS[mctag])
         if not mc_file:
             raise IOError("Can't open %s MC file: %s" % (mctag, _MC_PU_DISTRIBUTIONS[mctag]))
 
@@ -87,12 +87,51 @@ class PileupWeight(object):
         else:
             return 1.0
 
-_MC_PU_DISTRIBUTIONS['S10'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/MC_Summer12_PU_S10-600bins.root").full_path()
-_MC_PU_DISTRIBUTIONS['S7'] = 'fixme'
-_MC_PU_DISTRIBUTIONS['S6'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/MC_Fall11_PU_S6-500bins.root").full_path()
-# Version of the S6 with 600 bins, for compatibility
-_MC_PU_DISTRIBUTIONS['S6_600bins'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/MC_Fall11_PU_S6-600bins.root").full_path()
-_MC_PU_DISTRIBUTIONS['Asympt25ns'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/MC_PU_RunIISpring15DR74_Asympt.root").full_path()
-_MC_PU_DISTRIBUTIONS['25ns_matchData'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/MC_PU_2015_25ns_matchData.root").full_path()
-_MC_PU_DISTRIBUTIONS['MC_Spring16'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/PU_MC_Spring16.root").full_path()
-_MC_PU_DISTRIBUTIONS['MC_Moriond17'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/MC_PU_RunIIMoriond17_Asympt.root").full_path()
+_MC_PU_DISTRIBUTIONS['DY'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupDY.root").full_path()
+_MC_PU_DISTRIBUTIONS['DY1'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupDY1.root").full_path()
+_MC_PU_DISTRIBUTIONS['DY2'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupDY2.root").full_path()
+_MC_PU_DISTRIBUTIONS['DY3'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupDY3.root").full_path()
+_MC_PU_DISTRIBUTIONS['DY4'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupDY4.root").full_path()
+_MC_PU_DISTRIBUTIONS['DY10'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupDY10.root").full_path()
+_MC_PU_DISTRIBUTIONS['W'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupW.root").full_path()
+_MC_PU_DISTRIBUTIONS['W1'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupW1.root").full_path()
+_MC_PU_DISTRIBUTIONS['W2'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupW2.root").full_path()
+_MC_PU_DISTRIBUTIONS['W3'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupW3.root").full_path()
+_MC_PU_DISTRIBUTIONS['W4'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupW4.root").full_path()
+_MC_PU_DISTRIBUTIONS['WG'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupWG.root").full_path()
+_MC_PU_DISTRIBUTIONS['WW'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupWW.root").full_path()
+_MC_PU_DISTRIBUTIONS['WZ'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupWZ.root").full_path()
+_MC_PU_DISTRIBUTIONS['ZZ'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupZZ.root").full_path()
+_MC_PU_DISTRIBUTIONS['Wminus'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupEWKWminus.root").full_path()
+_MC_PU_DISTRIBUTIONS['Wplus'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupEWKWplus.root").full_path()
+_MC_PU_DISTRIBUTIONS['Zll'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupEWKZll.root").full_path()
+_MC_PU_DISTRIBUTIONS['Znunu'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupEWKZnunu.root").full_path()
+_MC_PU_DISTRIBUTIONS['STtantitop'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupSTtantitop.root").full_path()
+_MC_PU_DISTRIBUTIONS['STttop'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupSTttop.root").full_path()
+_MC_PU_DISTRIBUTIONS['STtWantitop'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupSTtWantitop.root").full_path()
+_MC_PU_DISTRIBUTIONS['STtWtop'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupSTtWtop.root").full_path()
+_MC_PU_DISTRIBUTIONS['TTTo2L2Nu'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupTTTo2L2Nu.root").full_path()
+_MC_PU_DISTRIBUTIONS['TTToHadronic'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupTTToHadronic.root").full_path()
+_MC_PU_DISTRIBUTIONS['TTToSemiLeptonic'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupTTToSemiLeptonic.root").full_path()
+_MC_PU_DISTRIBUTIONS['VBFHMT'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupVBFHMT.root").full_path()
+_MC_PU_DISTRIBUTIONS['VBFHTT'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupVBFHTT.root").full_path()
+_MC_PU_DISTRIBUTIONS['GGHMT'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupGGHMT.root").full_path()
+_MC_PU_DISTRIBUTIONS['GGHTT'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupGGHTT.root").full_path()
+_MC_PU_DISTRIBUTIONS['ZHTT'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupZHTT.root").full_path()
+_MC_PU_DISTRIBUTIONS['ttH'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupttH.root").full_path()
+_MC_PU_DISTRIBUTIONS['WminusHTT'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupWminusHTT.root").full_path()
+_MC_PU_DISTRIBUTIONS['WplusHTT'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupWplusHTT.root").full_path()
+_MC_PU_DISTRIBUTIONS['QCD'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupQCD.root").full_path()
+_MC_PU_DISTRIBUTIONS['DYAMC'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupDYAMC.root").full_path()
+_MC_PU_DISTRIBUTIONS['WWW'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupWWW.root").full_path()
+_MC_PU_DISTRIBUTIONS['WWZ'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupWWZ.root").full_path()
+_MC_PU_DISTRIBUTIONS['WZZ'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupWZZ.root").full_path()
+_MC_PU_DISTRIBUTIONS['Wminusv2'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupEWKWminusv2.root").full_path()
+_MC_PU_DISTRIBUTIONS['Wplusv2'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupEWKWplusv2.root").full_path()
+_MC_PU_DISTRIBUTIONS['Zllv2'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupEWKZllv2.root").full_path()
+_MC_PU_DISTRIBUTIONS['Znunuv2'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupEWKZnunuv2.root").full_path()
+_MC_PU_DISTRIBUTIONS['GGHET'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupGGHET.root").full_path()
+_MC_PU_DISTRIBUTIONS['VBFHET'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupVBFHET.root").full_path()
+_MC_PU_DISTRIBUTIONS['GGHTTv2'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupGGHTTv2.root").full_path()
+_MC_PU_DISTRIBUTIONS['GGHEM'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupGGHEM.root").full_path()
+_MC_PU_DISTRIBUTIONS['VBFHEM'] = FileInPath("FinalStateAnalysis/TagAndProbe/data/pileupVBFHEM.root").full_path()

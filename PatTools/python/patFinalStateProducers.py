@@ -126,30 +126,30 @@ def produce_final_states(process, daughter_collections, output_commands,
     isLFV=kwargs.get('isLFV',False)    
     isMC=kwargs.get('isMC',False)    
     if isLFV:
-    ## electron scale/smear corrections recommended to apply after Id calculation
-        ##first correct/smear the nominal ones
+    #electron scale/smear corrections recommended to apply after Id calculation
+        #first correct/smear the nominal ones
         process.RandomNumberGeneratorService = cms.Service("RandomNumberGeneratorService",
-                                                           calibratedPatElectrons  = cms.PSet( initialSeed = cms.untracked.uint32(8675389),
+                                                           calibratedPatElectronsRun2  = cms.PSet( initialSeed = cms.untracked.uint32(8675389),
                                                                                                engineName = cms.untracked.string('TRandom3'),
                                                                                                ),
                                                            )
 
         
         process.load('EgammaAnalysis.ElectronTools.calibratedElectronsRun2_cfi')
-        process.calibratedPatElectrons.isMC=cms.bool(isMC)
-        print process.calibratedPatElectrons.isMC
-        process.calibratedPatElectrons.electrons=cms.InputTag(src['electrons'])
+        process.calibratedPatElectronsRun2.isMC=cms.bool(isMC)
+        print process.calibratedPatElectronsRun2.isMC
+        process.calibratedPatElectronsRun2.electrons=cms.InputTag(src['electrons'])
         
         
-        process.EGMSmearerElectrons = cms.Path(process.calibratedPatElectrons)
+        process.EGMSmearerElectrons = cms.Path(process.calibratedPatElectronsRun2)
         
 
-        sequence+=process.calibratedPatElectrons
+        sequence+=process.calibratedPatElectronsRun2
         
-        ##then create up and down scale/resolution systematics using uncorrected input source
+        #then create up and down scale/resolution systematics using uncorrected input source
         process.load('FinalStateAnalysis.PatTools.electrons.electronSystematicsLFV_cfi')
 
-        process.electronSystematicsLFV.calibratedElectrons=cms.InputTag("calibratedPatElectrons")
+        process.electronSystematicsLFV.calibratedElectrons=cms.InputTag("calibratedPatElectronsRun2")
         process.electronSystematicsLFV.uncalibratedElectrons=cms.InputTag( src['electrons'])
 
         sequence+=process.electronSystematicsLFV
