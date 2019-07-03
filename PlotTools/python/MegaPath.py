@@ -6,9 +6,11 @@ Author: Evan K. Friis, UW Madison
 
 import logging
 import os
+import sys
 
 # Where to look for files.
 SEARCH_PATHS = ['.'] + os.environ.get("MEGAPATH", "").split(':')
+logging.basicConfig()
 log = logging.getLogger(__name__)
 
 
@@ -42,11 +44,13 @@ def find_input_files(input_file_list, nolocal=False):
 
 
     """
+    print "Input File List: ", input_file_list#[1:-1] #use this only for Meta
 
     if '.txt' in input_file_list:
-        log.info("Checking inputs file %s exists..." % input_file_list)
+        log.info("Checking inputs file %s exists..." % input_file_list)#[1:-1])
         # Get the inputs to make sure it exists
-        if not os.path.exists(input_file_list):
+        if not os.path.exists(input_file_list):#[1:-1]):
+            log.error("Path: %s", os.path)
             log.error(
                 "Error: inputs %s input file does not exist", input_file_list)
             sys.exit(5)

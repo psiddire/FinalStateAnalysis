@@ -19,6 +19,9 @@ _DATA_FILES = {
     'Muon' : {
         'frMuon'   : os.path.join(_DATA_DIR, 'frMuonPt.root')
         },
+    'Electron' : {                                                                                                                                                                                                                                                  
+        'frElectron' : os.path.join(_DATA_DIR, 'frElectronPt.root')                                                                                                                                                                       
+        },
     }
 
 
@@ -35,6 +38,12 @@ def FakeRateMuonWeight():
         "fakerate"
     )
 
+
+def FakeRateElectronWeight():                                                                                                                                                                                                                               
+    return FakeRateElectronWeight_ReReco(                                                                                                                                                                                                                
+        _DATA_FILES['Electron'],                                                                                                                                                                                                                             
+        "fakerate"                                                                                                                                                                                                                                                            
+    ) 
 
 class FakeRateWeight_ReReco(object):
 
@@ -69,14 +78,22 @@ class FakeRateWeight_ReReco(object):
         f = {'' : 1}
         if pt < 30:
             bin = 1
-        elif pt < 60:
+        elif pt < 40:
             bin = 2
-        elif pt < 90:
+        elif pt < 50:
             bin = 3
-        elif pt < 120:
+        elif pt < 60:
             bin = 4
+        elif pt < 70:
+            bin = 5 
+        elif pt < 90:
+            bin = 6 
+        elif pt < 120:
+            bin = 7
+        elif pt < 150:
+            bin = 8
         else:
-            bin = 5
+            bin = 9
         if abs(eta) < 1.5:
             if DM == 0:
                 f = {'': self.keyEBDM0.GetEfficiency(bin),
@@ -117,24 +134,57 @@ class FakeRateMuonWeight_ReReco(object):
         self.key = self.file.Get(self.histopath)
 
     def __call__(self, pt, shift=''):
+        if pt < 10:
+            bin = 1
+        elif pt < 20:
+            bin = 2
+        elif pt < 30:
+            bin = 3
+        elif pt < 40:
+            bin = 4
+        elif pt < 50:
+            bin = 5
+        elif pt < 60:
+            bin = 6
+        else:
+            bin = 1
+        f = {'': self.key.GetEfficiency(bin),
+             'frUp': self.key.GetEfficiency(bin) + self.key.GetEfficiencyErrorUp(bin),
+             'frDown': self.key.GetEfficiency(bin) - self.key.GetEfficiencyErrorLow(bin)}
+        if (f[shift] >= 1 or f[shift] < 0) or (f[''] >= 1 or f[''] < 0):
+            return 0
+        return (f[shift]/(1-f[shift]))
+
+
+class FakeRateElectronWeight_ReReco(object):                                                                                                                                                                                                                        
+
+    def __init__(self, files, frHisto):
+        self.filename = files['frElectron']                                                                                                                                                                                                            
+        self.file = ROOT.TFile.Open(self.filename)
+        self.histopath = frHisto
+        self.key = self.file.Get(self.histopath)
+        
+    def __call__(self, pt, shift=''):
         if pt < 30:
             bin = 1
         elif pt < 60:
             bin = 2
         elif pt < 90:
             bin = 3
-        elif pt < 120:
+        elif pt < 120:                                                                                                                                                                                                                                                 
             bin = 4
         else:
             bin = 5
         f = {'': self.key.GetEfficiency(bin),
              'frUp': self.key.GetEfficiency(bin) + self.key.GetEfficiencyErrorUp(bin),
              'frDown': self.key.GetEfficiency(bin) - self.key.GetEfficiencyErrorLow(bin)}
+
         if f[shift] >= 1 or f[shift] < 0:
             return 0
-        return (f[shift]/(1-f[shift]))
+        return (f[shift]/(1-f[shift]))  
 
 
 if __name__ == "__main__":
     FakeRateWeight()
     FakeRateMuonWeight()
+    FakeRateElectronWeight()

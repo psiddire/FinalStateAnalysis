@@ -163,6 +163,15 @@ shiftedMet = PSet(
     type1_pfMet_shiftedPt_JetTimePtEtaDown      = 'evt.metShift("pfmet","pt","jesTimePtEta-")',
     type1_pfMet_shiftedPt_JetClosureUp          = 'evt.metShift("pfmet","pt","jesClosure+")',
     type1_pfMet_shiftedPt_JetClosureDown        = 'evt.metShift("pfmet","pt","jesClosure-")',
+    type1_pfMet_shiftedPt_UesHCALUp             = 'evt.metShift("pfmet","pt","uesHCAL+")',
+    type1_pfMet_shiftedPt_UesHCALDown           = 'evt.metShift("pfmet","pt","uesHCAL-")',
+    type1_pfMet_shiftedPt_UesHFUp               = 'evt.metShift("pfmet","pt","uesHF+")',                                                                                                                                                       
+    type1_pfMet_shiftedPt_UesHFDown             = 'evt.metShift("pfmet","pt","uesHF-")',
+    type1_pfMet_shiftedPt_UesECALUp             = 'evt.metShift("pfmet","pt","uesECAL+")',                                                                                                                                                                           
+    type1_pfMet_shiftedPt_UesECALDown           = 'evt.metShift("pfmet","pt","uesECAL-")',                                                                                                                                                                             
+    type1_pfMet_shiftedPt_UesCHARGEDUp          = 'evt.metShift("pfmet","pt","uesCHARGED+")',                                                                                                                                                                            
+    type1_pfMet_shiftedPt_UesCHARGEDDown        = 'evt.metShift("pfmet","pt","uesCHARGED-")',
+
                                                                                                                                                                                                                                                                
     type1_pfMet_shiftedPhi_JetAbsoluteFlavMapUp     = 'evt.metShift("pfmet","phi","jesAbsoluteFlavMap+")',                                                                                                                                                        
     type1_pfMet_shiftedPhi_JetAbsoluteFlavMapDown   = 'evt.metShift("pfmet","phi","jesAbsoluteFlavMap-")',                                                                                                                                                        
@@ -218,7 +227,14 @@ shiftedMet = PSet(
     type1_pfMet_shiftedPhi_JetTimePtEtaDown      = 'evt.metShift("pfmet","phi","jesTimePtEta-")',                                                                                                                                                              
     type1_pfMet_shiftedPhi_JetClosureUp          = 'evt.metShift("pfmet","phi","jesClosure+")',                                                                                                                                                                
     type1_pfMet_shiftedPhi_JetClosureDown        = 'evt.metShift("pfmet","phi","jesClosure-")',                                                                                                                                                                
-                                                                                                                
+    type1_pfMet_shiftedPhi_UesHCALUp             = 'evt.metShift("pfmet","phi","uesHCAL+")',
+    type1_pfMet_shiftedPhi_UesHCALDown           = 'evt.metShift("pfmet","phi","uesHCAL-")',
+    type1_pfMet_shiftedPhi_UesHFUp               = 'evt.metShift("pfmet","phi","uesHF+")',
+    type1_pfMet_shiftedPhi_UesHFDown             = 'evt.metShift("pfmet","phi","uesHF-")',
+    type1_pfMet_shiftedPhi_UesECALUp             = 'evt.metShift("pfmet","phi","uesECAL+")',
+    type1_pfMet_shiftedPhi_UesECALDown           = 'evt.metShift("pfmet","phi","uesECAL-")',
+    type1_pfMet_shiftedPhi_UesCHARGEDUp          = 'evt.metShift("pfmet","phi","uesCHARGED+")',
+    type1_pfMet_shiftedPhi_UesCHARGEDDown        = 'evt.metShift("pfmet","phi","uesCHARGED-")',                                                                                                             
 
 # We do not use these 
 #    type1_pfMet_shiftedPt_MuonEnUp             = 'evt.metShift("pfmet","pt","mes+")',

@@ -45,12 +45,12 @@ namespace :meta do
     if sample.include? 'data'
       # Get lumi mask in plain format.
       file sample + '.lumimask.json' => sample + '.meta.json' do |t|
-        sh "cat #{t.prerequisites} | dump_lumimask.py > #{t.name}"
+        sh "cat #{t.prerequisites[0]} | dump_lumimask.py > #{t.name}"
       end
       # Run lumicalc on the mask
       file sample + '.lumicalc.csv' => sample + '.lumimask.json' do |t|
-        #sh "pixelLumiCalc.py overview -i #{t.prerequisites} -o #{t.name}"
-        #sh "lumiCalc2.py overview -i #{t.prerequisites} -o #{t.name}"
+        #sh "pixelLumiCalc.py overview -i #{t.prerequisites[0]} -o #{t.name}"
+        #sh "lumiCalc2.py overview -i #{t.prerequisites[0]} -o #{t.name}"
         print "lumiCalc2 this does not work yet --> move to brilcalc \n"
       end
       # Get the PU distribution
@@ -61,9 +61,9 @@ namespace :meta do
         # Minbias xsection
         minbias = 68000
         if sqrts == "13" then
-          pu_file = ENV['pu2016JSON']
-          maxbin = 75
-          nbins = 75
+          pu_file = ENV['pu2017JSON']
+          maxbin = 100
+          nbins = 100
           # Minbias xsection
           minbias = 69200 # suggested for 13TeV
         end
@@ -91,11 +91,12 @@ namespace :meta do
     else
       # In MC, we can get the effective lumi from xsec and #events.
       file sample + '.lumicalc.sum' => sample + '.meta.json' do |t|
-        event=`cat #{t.prerequisites} | extract_json.py n_evts`
-        weight=`cat #{t.prerequisites} | extract_json.py sumweights`
+
+        event=`cat #{t.prerequisites[0]} | extract_json.py n_evts`
+        weight=`cat #{t.prerequisites[0]} | extract_json.py sumweights`
         print event.to_i, " " , weight.to_i, "\n"
         if event.to_i==weight.to_i then
-          sh "get_mc_lumi.py --sqrts #{sqrts} #{sample} `cat #{t.prerequisites} | extract_json.py n_evts` > #{t.name}"
+          sh "get_mc_lumi.py --sqrts #{sqrts} #{sample} `cat #{t.prerequisites[0]} | extract_json.py n_evts` > #{t.name}"
         end
         if event.to_i!=weight.to_i then
           sh "get_mc_lumi.py --sqrts #{sqrts} #{sample} #{weight.to_f} > #{t.name}"
@@ -116,6 +117,7 @@ namespace :meta do
 
       FileList["*.txt"].each do |txtfile|
         sample = txtfile.sub('.txt', '')
+
         #check if we have to override
         meta_ntuple = args.ntuple
         meta_histo = args.histo
