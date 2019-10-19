@@ -16,17 +16,17 @@ from FinalStateAnalysis.Utilities.cfgtools import PSet
 
 # ID and isolation
 id = PSet(
-    objectCBIDVeto = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-veto")',
-    objectCBIDLoose = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-loose")',
-    objectCBIDMedium = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-medium")',
-    objectCBIDTight = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-tight")',
+    #objectCBIDVeto = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-veto")',
+    #objectCBIDLoose = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-loose")',
+    #objectCBIDMedium = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-medium")',
+    #objectCBIDTight = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-tight")',
     objectMVAIsoWP80 = '{object}.electronID("mvaEleID-Fall17-iso-V2-wp80")',
     objectMVAIsoWP90 = '{object}.electronID("mvaEleID-Fall17-iso-V2-wp90")',
-    objectMVAIsoWPHZZ = '{object}.electronID("mvaEleID-Fall17-iso-V2-wpHZZ")',
-    objectMVAIsoWPLoose = '{object}.electronID("mvaEleID-Fall17-iso-V2-wpLoose")',
+    #objectMVAIsoWPHZZ = '{object}.electronID("mvaEleID-Fall17-iso-V2-wpHZZ")',
+    #objectMVAIsoWPLoose = '{object}.electronID("mvaEleID-Fall17-iso-V2-wpLoose")',
     objectMVANoisoWP80 = '{object}.electronID("mvaEleID-Fall17-noIso-V2-wp80")',
     objectMVANoisoWP90 = '{object}.electronID("mvaEleID-Fall17-noIso-V2-wp90")',
-    objectMVANoisoWPLoose = '{object}.electronID("mvaEleID-Fall17-noIso-V2-wpLoose")',
+    #objectMVANoisoWPLoose = '{object}.electronID("mvaEleID-Fall17-noIso-V2-wpLoose")',
     objectCorrectedEt = '{object}.userFloat("ecalTrkEnergyPostCorr")',
     objectEnergyScaleDown = '{object}.userFloat("energyScaleDown")',
     objectEnergyScaleUp = '{object}.userFloat("energyScaleUp")',
@@ -82,20 +82,21 @@ id = PSet(
     # raw energy error
     objectEnergyError = '{object}.corrections().combinedP4Error',
     # shower shape / ID variables
-    objectHadronicOverEM = '{object}.hcalOverEcal',
-    objectHadronicDepth1OverEm = '{object}.hcalDepth1OverEcal',
-    objectHadronicDepth2OverEm = '{object}.hcalDepth2OverEcal',
-    objectSigmaIEtaIEta = '{object}.sigmaIetaIeta',
-    objectdeltaEtaSuperClusterTrackAtVtx = '{object}.deltaEtaSuperClusterTrackAtVtx',
-    objectdeltaPhiSuperClusterTrackAtVtx = '{object}.deltaPhiSuperClusterTrackAtVtx',
-    objectfBrem = '{object}.fbrem',
-    objecteSuperClusterOverP = '{object}.eSuperClusterOverP',
-    objectecalEnergy = '{object}.ecalEnergy',
-    objecttrackMomentumAtVtxP = '{object}.trackMomentumAtVtx.r',
-    objectE1x5 = '{object}.scE1x5',
-    objectE2x5Max = '{object}.scE2x5Max',
-    objectE5x5 = '{object}.scE5x5',
+    #objectHadronicOverEM = '{object}.hcalOverEcal',
+    #objectHadronicDepth1OverEm = '{object}.hcalDepth1OverEcal',
+    #objectHadronicDepth2OverEm = '{object}.hcalDepth2OverEcal',
+    #objectSigmaIEtaIEta = '{object}.sigmaIetaIeta',
+    #objectdeltaEtaSuperClusterTrackAtVtx = '{object}.deltaEtaSuperClusterTrackAtVtx',
+    #objectdeltaPhiSuperClusterTrackAtVtx = '{object}.deltaPhiSuperClusterTrackAtVtx',
+    #objectfBrem = '{object}.fbrem',
+    #objecteSuperClusterOverP = '{object}.eSuperClusterOverP',
+    #objectecalEnergy = '{object}.ecalEnergy',
+    #objecttrackMomentumAtVtxP = '{object}.trackMomentumAtVtx.r',
+    #objectE1x5 = '{object}.scE1x5',
+    #objectE2x5Max = '{object}.scE2x5Max',
+    #objectE5x5 = '{object}.scE5x5',
     objectNearMuonVeto = 'overlapMuons({object_idx},0.05,"isGlobalMuon() & abs(eta()) < 2.4").size()',
+    # Gen Info
     objectGenMotherPdgId = '? (getDaughterGenParticleMotherSmart({object_idx}, 11, 0).isAvailable && getDaughterGenParticleMotherSmart({object_idx}, 11, 0).isNonnull) ? getDaughterGenParticleMotherSmart({object_idx}, 11, 0).pdgId() : -999',
     objectComesFromHiggs = 'comesFromHiggs({object_idx}, 11, 1)',
     objectGenParticle    = '? ({object}.genParticleRef.isNonnull() ) ? {object}.genParticleRef().pdgId() : -999',
@@ -130,13 +131,13 @@ tracking = PSet(
 
 # Information about the matched supercluster
 supercluster = PSet(
-    objectSCEta = '{object}.superCluster().eta',
-    objectSCPhi = '{object}.superCluster().phi',
-    objectSCEnergy = '{object}.superCluster().energy',
-    objectSCRawEnergy = '{object}.superCluster().rawEnergy',
-    objectSCPreshowerEnergy = '{object}.superCluster().preshowerEnergy',
-    objectSCPhiWidth = '{object}.superCluster().phiWidth',
-    objectSCEtaWidth = '{object}.superCluster().etaWidth'   
+    #objectSCEta = '{object}.superCluster().eta',
+    #objectSCPhi = '{object}.superCluster().phi',
+    #objectSCEnergy = '{object}.superCluster().energy',
+    #objectSCRawEnergy = '{object}.superCluster().rawEnergy',
+    #objectSCPreshowerEnergy = '{object}.superCluster().preshowerEnergy',
+    #objectSCPhiWidth = '{object}.superCluster().phiWidth',
+    #objectSCEtaWidth = '{object}.superCluster().etaWidth'   
 )
 
 trigger_50ns = PSet(

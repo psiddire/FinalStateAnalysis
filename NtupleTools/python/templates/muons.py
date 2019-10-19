@@ -16,21 +16,21 @@ from FinalStateAnalysis.Utilities.cfgtools import PSet
 
 # ID and isolation
 id = PSet(
-    objectCutBasedIdLoose = '{object}.userInt("CutBasedIdLoose")',
-    objectCutBasedIdMedium = '{object}.userInt("CutBasedIdMedium")',
-    objectCutBasedIdMediumPrompt = '{object}.userInt("CutBasedIdMediumPrompt")',
-    objectCutBasedIdTight = '{object}.userInt("CutBasedIdTight")',
-    objectCutBasedIdGlobalHighPt = '{object}.userInt("CutBasedIdGlobalHighPt")',
-    objectCutBasedIdTrkHighPt = '{object}.userInt("CutBasedIdTrkHighPt")',
-    objectPFIsoVeryLoose = '{object}.userInt("PFIsoVeryLoose")',
+    #objectCutBasedIdLoose = '{object}.userInt("CutBasedIdLoose")',
+    #objectCutBasedIdMedium = '{object}.userInt("CutBasedIdMedium")',
+    #objectCutBasedIdMediumPrompt = '{object}.userInt("CutBasedIdMediumPrompt")',
+    #objectCutBasedIdTight = '{object}.userInt("CutBasedIdTight")',
+    #objectCutBasedIdGlobalHighPt = '{object}.userInt("CutBasedIdGlobalHighPt")',
+    #objectCutBasedIdTrkHighPt = '{object}.userInt("CutBasedIdTrkHighPt")',
+    #objectPFIsoVeryLoose = '{object}.userInt("PFIsoVeryLoose")',
     objectPFIsoLoose = '{object}.userInt("PFIsoLoose")',
     objectPFIsoMedium = '{object}.userInt("PFIsoMedium")',
     objectPFIsoTight = '{object}.userInt("PFIsoTight")',
-    objectPFIsoVeryTight = '{object}.userInt("PFIsoVeryTight")',
+    #objectPFIsoVeryTight = '{object}.userInt("PFIsoVeryTight")',
     #objectPFIsoVeryVeryTight = '{object}.userInt("PFIsoVeryVeryTight")', # for CMSSW_10_1_X
-    objectTkIsoLoose = '{object}.userInt("TkIsoLoose")',
-    objectTkIsoTight = '{object}.userInt("TkIsoTight")',
-    objectSoftCutBasedId = '{object}.userInt("SoftCutBasedId")',
+    #objectTkIsoLoose = '{object}.userInt("TkIsoLoose")',
+    #objectTkIsoTight = '{object}.userInt("TkIsoTight")',
+    #objectSoftCutBasedId = '{object}.userInt("SoftCutBasedId")',
     #objectSoftMvaId = '{object}.userInt("SoftMvaId")', # for CMSSW_10_1_X
     objectMvaLoose = '{object}.userInt("MvaLoose")',
     objectMvaMedium = '{object}.userInt("MvaMedium")',
@@ -49,8 +49,8 @@ id = PSet(
     objectPFIDLoose = '{object}.isLooseMuon()',
     objectSegmentCompatibility = '{object}.segmentCompatibility()',
     # For charged, we use ALL charged particles
-    objectEffectiveArea2012 = '{object}.userFloat("ea_comb_iso04_kt6PFJCNth05")',
-    objectEffectiveArea2011 = '{object}.userFloat("ea_comb_iso04_kt6PFJCth05")',
+    #objectEffectiveArea2012 = '{object}.userFloat("ea_comb_iso04_kt6PFJCNth05")',
+    #objectEffectiveArea2011 = '{object}.userFloat("ea_comb_iso04_kt6PFJCth05")',
     objectRho = cms.string('{object}.userFloat("rho_fastjet")'),
     objectPFChargedIso = cms.string('{object}.userIsolation("PfChargedHadronIso")'),
     objectPFNeutralIso = cms.string('{object}.userIsolation("PfNeutralHadronIso")'),
@@ -114,13 +114,13 @@ id = PSet(
 )
 
 energyCorrections = PSet(
-    objectPt_MuonEnUp = '? daughterHasUserCand({object_idx}, "mesUpMuons") ? daughterAsMuon({object_idx}).userCand("mesUpMuons").pt : -999.',
-    objectEta_MuonEnUp = '? daughterHasUserCand({object_idx}, "mesUpMuons") ? daughterAsMuon({object_idx}).userCand("mesUpMuons").eta : -999.',
-    objectPhi_MuonEnUp = '? daughterHasUserCand({object_idx}, "mesUpMuons") ? daughterAsMuon({object_idx}).userCand("mesUpMuons").phi : -999.',
+    #objectPt_MuonEnUp = '? daughterHasUserCand({object_idx}, "mesUpMuons") ? daughterAsMuon({object_idx}).userCand("mesUpMuons").pt : -999.',
+    #objectEta_MuonEnUp = '? daughterHasUserCand({object_idx}, "mesUpMuons") ? daughterAsMuon({object_idx}).userCand("mesUpMuons").eta : -999.',
+    #objectPhi_MuonEnUp = '? daughterHasUserCand({object_idx}, "mesUpMuons") ? daughterAsMuon({object_idx}).userCand("mesUpMuons").phi : -999.',
 
-    objectPt_MuonEnDown = '? daughterHasUserCand({object_idx}, "mesDownMuons") ? daughterAsMuon({object_idx}).userCand("mesDownMuons").pt : -999.',
-    objectEta_MuonEnDown = '? daughterHasUserCand({object_idx}, "mesDownMuons") ? daughterAsMuon({object_idx}).userCand("mesDownMuons").eta : -999.',
-    objectPhi_MuonEnDown = '? daughterHasUserCand({object_idx}, "mesDownMuons") ? daughterAsMuon({object_idx}).userCand("mesDownMuons").phi : -999.',
+    #objectPt_MuonEnDown = '? daughterHasUserCand({object_idx}, "mesDownMuons") ? daughterAsMuon({object_idx}).userCand("mesDownMuons").pt : -999.',
+    #objectEta_MuonEnDown = '? daughterHasUserCand({object_idx}, "mesDownMuons") ? daughterAsMuon({object_idx}).userCand("mesDownMuons").eta : -999.',
+    #objectPhi_MuonEnDown = '? daughterHasUserCand({object_idx}, "mesDownMuons") ? daughterAsMuon({object_idx}).userCand("mesDownMuons").phi : -999.',
 
 )
 
