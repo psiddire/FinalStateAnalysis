@@ -21,11 +21,10 @@ _DATA_DIR = os.path.join(os.environ['CMSSW_BASE'], 'src',
 
 _DATA_FILES = {
     '2018' : {
-        'ID'   : [os.path.join(_DATA_DIR, 'RunABCD_SF_ID.root')],
-        'Iso'    : [os.path.join(_DATA_DIR, 'RunABCD_SF_ISO.root')],
-        'Trigger':[ os.path.join(_DATA_DIR, 'EfficienciesAndSF_2018Data_BeforeMuonHLTUpdate.root'),
-                    os.path.join(_DATA_DIR, 'EfficienciesAndSF_2018Data_AfterMuonHLTUpdate.root')
-                ]
+        'ID'     : os.path.join(_DATA_DIR, 'RunABCD_SF_ID.root'),
+        'Iso'    : os.path.join(_DATA_DIR, 'RunABCD_SF_ISO.root'),
+        'Trigger': [os.path.join(_DATA_DIR, 'EfficienciesAndSF_2018Data_BeforeMuonHLTUpdate.root'),
+                    os.path.join(_DATA_DIR, 'EfficienciesAndSF_2018Data_AfterMuonHLTUpdate.root')]
     }
 }
 
@@ -74,22 +73,20 @@ def make_muon_pog_IsoMu24_2018():
 class MuonPOGCorrectionID2D(object):
 
     def __init__(self, file, pt_abseta):
-        self.filename = file
         self.file = ROOT.TFile.Open(file)
         self.histopath = pt_abseta
         self.correct_by_pt_abseta = {}
+        self.key = self.file.Get(self.histopath)
 
     def __call__(self, pt, eta):
         if pt >= 120: pt = 115.
-        key = self.file.Get(self.histopath)
-        self.correct_by_pt_abseta = key.GetBinContent(key.FindFixBin(pt, eta))
+        self.correct_by_pt_abseta = self.key.GetBinContent(self.key.FindFixBin(pt, eta))
         return self.correct_by_pt_abseta
 
 
-class MuonPOGCorrectionLooseIso2D_ReReco(object):
+class MuonPOGCorrectionLooseIso2D(object):
 
     def __init__(self, file, MuonID, pt_abseta):
-        self.filename = file
         self.file = ROOT.TFile.Open(file)
         if MuonID=='Tight':
             self.histopath = pt_abseta[2]
@@ -106,10 +103,9 @@ class MuonPOGCorrectionLooseIso2D_ReReco(object):
         return self.correct_by_pt_abseta
 
 
-class MuonPOGCorrectionTightIso2D_ReReco(object):
+class MuonPOGCorrectionTightIso2D(object):
 
     def __init__(self, file, MuonID, pt_abseta):
-        self.filename = file
         self.file = ROOT.TFile.Open(file)
         if MuonID=='Tight':
             self.histopath = pt_abseta[1]
@@ -127,8 +123,8 @@ class MuonPOGCorrectionTightIso2D_ReReco(object):
 class MuonPOGCorrectionTrig2D_weighted(object):
 
     def __init__(self, file, pt_abseta, lumi1, lumi2):
-        self.filename = file
-        self.file = ROOT.TFile.Open(file)
+        self.file1 = ROOT.TFile.Open(file[0])
+        self.file2 = ROOT.TFile.Open(file[1])
         self.lumi1 = lumi1
         self.lumi2 = lumi2
         self.histopath1 = pt_abseta[0]
@@ -136,8 +132,8 @@ class MuonPOGCorrectionTrig2D_weighted(object):
         self.correct_by_pt_abseta1 = {}
         self.correct_by_pt_abseta2 = {}
         self.correct_by_pt_abseta_weighted = {}
-        self.key1 = self.file.Get(self.histopath1)
-        self.key2 = self.file.Get(self.histopath2)
+        self.key1 = self.file1.Get(self.histopath1)
+        self.key2 = self.file2.Get(self.histopath2)
 
     def __call__(self, pt, eta):
         if pt >= 1200: pt = 1000.
