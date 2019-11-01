@@ -43,12 +43,12 @@ def find_input_files(input_file_list, nolocal=False):
 
     """
 
-    if '.txt' in input_file_list:
-        log.info("Checking inputs file %s exists..." % input_file_list)
+    if '.txt' in input_file_list:#[1:-1]:
+        log.info("Checking inputs file %s exists..." % input_file_list)#[1:-1])
         # Get the inputs to make sure it exists
-        if not os.path.exists(input_file_list):
+        if not os.path.exists(input_file_list):#[1:-1]):
             log.error(
-                "Error: inputs %s input file does not exist", input_file_list)
+                "Error: inputs %s input file does not exist", input_file_list)#[1:-1])
             sys.exit(5)
         with open(input_file_list) as inputs_file:
             for line in inputs_file:

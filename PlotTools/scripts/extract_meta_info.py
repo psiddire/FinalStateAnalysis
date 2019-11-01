@@ -67,15 +67,19 @@ if __name__ == "__main__":
     run_lumis = {}
 
     for file in files:
-        log.debug("OPEN file %s", file)
-        tfile = ROOT.TFile.Open(file, "READ")
+        print "File: ", file[1:-1]
+        log.debug("OPEN file %s", file[1:-1])
+        tfile = ROOT.TFile.Open(file[1:-1], "READ")
         #histo = tfile.Get(args.histo)
         #if not histo :
         #    log.error("Cannot get weights histo %s from file %s", args.histo, file)
         #    raise SystemExit(1)
         #total_weights+=histo.Integral()
  
+        print "Tree: ", args.tree
+
         tree = tfile.Get(args.tree)
+
         if not tree:
             log.error("Cannot get tree %s from file %s", args.tree, file)
             raise SystemExit(1)
@@ -86,11 +90,11 @@ if __name__ == "__main__":
             # We only care about this if we are building the lumimask
             if args.lumimask:
                 run_lumi = (tree.run, tree.lumi)
-                log.debug("R-L %s %s", repr(run_lumi), file)
+                log.debug("R-L %s %s", repr(run_lumi), file[1:-1])
                 if run_lumi in run_lumis:
                     log.error("Run-lumi %s found in file \n%s \nand %s!",
-                              run_lumi, file, run_lumis[run_lumi])
-                run_lumis[run_lumi] = file
+                              run_lumi, file[1:-1], run_lumis[run_lumi])
+                run_lumis[run_lumi] = file[1:-1]
         #log.info("Summed Weights: %s", str(total_weights))
         tfile.Close()
 

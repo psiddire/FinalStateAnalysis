@@ -332,6 +332,7 @@ fs_daughter_inputs = {
     'mvamet': 'fixme',              # produced later
     'puppimet': 'slimmmedMETsPuppi',
     'vertices': 'offlineSlimmedPrimaryVertices',
+    'pfCand': 'packedPFCandidates',
 }
 
 # add additional final states to ntuples with different parameters... work in progress... difficult with VID
@@ -853,6 +854,7 @@ if options.era=="2018" or options.era=="2018prompt":
 if options.era=="2017":
   from FinalStateAnalysis.NtupleTools.customization_2017jets import preJets
   from FinalStateAnalysis.NtupleTools.customization_2017metjets import preMETFromJES
+  from FinalStateAnalysis.NtupleTools.customization_2017metuesjets import preMETFromUES
 if options.era=="2016":
   from FinalStateAnalysis.NtupleTools.customization_2016jets import preJets
   from FinalStateAnalysis.NtupleTools.customization_2016metjets import preMETFromJES
@@ -870,15 +872,26 @@ fs_daughter_inputs['jets']  = preJets(process,
 
 if options.fullJES and options.metShift:
     fs_daughter_inputs['pfmet'] = preMETFromJES(process,
-                                     fs_daughter_inputs['jets'],
-                                     fs_daughter_inputs['vertices'],
-                                     fs_daughter_inputs['pfmet'],
-                                     fs_daughter_inputs['muons'],
-                                     fs_daughter_inputs['electrons'],
-                                     doBTag=False,
-                                     doFullJESUnc=options.fullJES,
-                                     runningLocal=options.runningLocal,
-                                     jType="AK4PFchs")
+                                                fs_daughter_inputs['jets'],
+                                                fs_daughter_inputs['vertices'],
+                                                fs_daughter_inputs['pfmet'],
+                                                fs_daughter_inputs['muons'],
+                                                fs_daughter_inputs['electrons'],
+                                                doBTag=False,
+                                                doFullJESUnc=options.fullJES,
+                                                runningLocal=options.runningLocal,
+                                                jType="AK4PFchs")
+
+if options.fullJES and options.metShift:
+    fs_daughter_inputs['pfmet'] = preMETFromUES(process,
+                                                fs_daughter_inputs['pfCand'],
+                                                fs_daughter_inputs['jets'],
+                                                fs_daughter_inputs['vertices'],
+                                                fs_daughter_inputs['pfmet'],
+                                                fs_daughter_inputs['muons'],
+                                                fs_daughter_inputs['electrons'],
+                                                fs_daughter_inputs['taus'],
+                                                fs_daughter_inputs['photons'])
 
 for fs in additional_fs:
     additional_fs[fs]['jets'] = preJets(process,
@@ -891,13 +904,13 @@ for fs in additional_fs:
                                         postfix=fs)   # why do we need to redo this?  the cleaning?
     
     additional_fs[fs]['pfmet'] = preMETFromJES(process,
-                                        additional_fs[fs]['jets'],
-                                        additional_fs[fs]['vertices'],
-                                        fs_daughter_inputs['pfmet'],
-                                        additional_fs[fs]['muons'],
-                                        additional_fs[fs]['electrons'],
-                                        jType="AK4PFchs",
-                                        postfix=fs)   # why do we need to redo this?  the cleaning? 
+                                               additional_fs[fs]['jets'],
+                                               additional_fs[fs]['vertices'],
+                                               fs_daughter_inputs['pfmet'],
+                                               additional_fs[fs]['muons'],
+                                               additional_fs[fs]['electrons'],
+                                               jType="AK4PFchs",
+                                               postfix=fs)   # why do we need to redo this?  the cleaning? 
 
 
 ########################################
