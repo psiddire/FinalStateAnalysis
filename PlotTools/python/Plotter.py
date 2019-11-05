@@ -163,6 +163,21 @@ class Plotter(object):
         return [legend1, legend2]
 
 
+    def add_legend_single(self, samples, leftside=True, entries=None):
+        ''' Build a legend using samples. If entries is None it will be taken from len(samples)'''
+        nentries = entries if entries is not None else len(samples)
+        legend = plotting.Legend(nentries, rightmargin=0.01, topmargin=0.01, leftmargin=0.6, entryheight=0.04, textfont=43, textsize=20)
+        legend.AddEntry(samples[0])
+        for j, s in enumerate(samples[1].GetHists()):
+            legend.AddEntry(s)
+
+        legend.SetEntrySeparation(0.2)
+        legend.SetMargin(0.35)
+        legend.Draw()
+        self.keep.append(legend)
+        return [legend] 
+
+
     def add_cms_blurb(self, sqrts, jets, channel, preliminary=True, lumiformat='%0.1f'):
         ''' Add the CMS blurb '''
         latex = ROOT.TLatex()
@@ -174,16 +189,16 @@ class Plotter(object):
         label_text = "#bf{CMS}"
         if preliminary:
             label_text += "#bf{ Preliminary}"
-        data_text = (lumiformat + " fb^{-1}") % (41.8)
+        data_text = (lumiformat + " fb^{-1}") % (59.3)
         data_text += " (2017, %i TeV)" % sqrts
         if 'mumutau' in channel:
             jets_text = "#mu#mu#tau_{h}"
-        if 'mutau' in channel:
+        elif 'mutau' in channel:
             if 'h' in channel:
                 jets_text = "#mu#tau_{h}"
             else:
                 jets_text = "#mu#tau_{e}"
-        if 'etau' in channel:
+        elif 'etau' in channel:
             if 'h' in channel:
                 jets_text = "e#tau_{h}"
             else:
@@ -546,7 +561,7 @@ class Plotter(object):
         if signal:
             self.add_legend([data, mc_stack, signalview[0], signalview[1]], leftside, entries = len(mc_stack.GetHists()) + len(signalview) + 1)
         else:
-            self.add_legend([data, mc_stack, leftside, entries = len(mc_stack.GetHists()) + 1)
+            self.add_legend_single([data, mc_stack], leftside, entries = len(mc_stack.GetHists()) + 1)
 
         self.add_cms_blurb(13, jets, channel)
         if show_ratio:
