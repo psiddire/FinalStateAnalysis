@@ -8,13 +8,15 @@ https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonReferenceEffs2018
 import os
 import re
 import ROOT
-from graphReader import GraphReaderTrackingEta
+from graphReader import GraphReaderTrackingEta, GraphReaderSF
 from correctionloader import CorrectionLoader
 
 # Update when 2018 tracking numbers are available
 mu_trackingEta_2018 = GraphReaderTrackingEta(
     os.path.join(os.environ['fsa'], 'TagAndProbe/data/fits.root'),'ratio_eff_eta3_dr030e030_corr'
 )
+
+mu_IsoMu27_2018 = GraphReaderSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/Muon_Run2018_IsoMu27.root'))
 
 _DATA_DIR = os.path.join(os.environ['CMSSW_BASE'], 'src',
                          "FinalStateAnalysis", "TagAndProbe", "data")

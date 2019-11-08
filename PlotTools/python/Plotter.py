@@ -193,6 +193,10 @@ class Plotter(object):
         data_text += " (2017, %i TeV)" % sqrts
         if 'mumutau' in channel:
             jets_text = "#mu#mu#tau_{h}"
+        elif 'mumumu' in channel:
+            jets_text = "#mu#mu#mu"
+        elif 'mumue' in channel:
+            jets_text = "#mu#mu e"
         elif 'mutau' in channel:
             if 'h' in channel:
                 jets_text = "#mu#tau_{h}"
