@@ -9,6 +9,12 @@ https://twiki.cern.ch/twiki/bin/view/CMS/EgammaPOG
 import os
 import re
 import ROOT
+from graphReader import GraphReaderEleSF
+
+el_Ele24_2018 = GraphReaderEleSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/Electron_Run2018_Ele24.root'))
+el_Ele32orEle35_2018 = GraphReaderEleSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/Electron_Run2018_Ele32orEle35.root'))
+el_Ele35_2018 = GraphReaderEleSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/Electron_Run2018_Ele35.root'))
+el_IdIso_2018 = GraphReaderEleSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/Electron_Run2018_IdIso.root'))
 
 _DATA_DIR = os.path.join(os.environ['CMSSW_BASE'], 'src',
                          "FinalStateAnalysis", "TagAndProbe", "data")

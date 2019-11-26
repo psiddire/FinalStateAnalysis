@@ -10,7 +10,7 @@ import rootpy.plotting.views as views
 import rootpy.plotting as plotting
 from FinalStateAnalysis.MetaData.data_views import data_views
 from FinalStateAnalysis.PlotTools.RebinView import RebinView
-from FinalStateAnalysis.PlotTools.SystematicsView     import SystematicsView
+from FinalStateAnalysis.PlotTools.SystematicsView import SystematicsView
 from FinalStateAnalysis.Utilities.struct import struct
 import FinalStateAnalysis.Utilities.prettyjson as prettyjson
 import ROOT
@@ -118,6 +118,27 @@ class Plotter(object):
                 self.rebin_view(mc_view, rebin)
                 )            
         return views.StackView(*mc_views, sorted=sort)
+
+
+    def make_syserr(self, mc_err, variable=None, folder=''):
+        ''' Make systematic error '''
+        hist_int = {}
+        tot_int = 0
+        sys_err = 0
+        for x in self.mc_samples:
+            mc_view = self.get_view(x)
+            if folder:
+                mc_view = self.get_wild_dir(mc_view, folder)
+            mc_hist = mc_view.Get(variable)
+            tot_int = tot_int + mc_hist.Integral()
+            hist_int[x] = mc_hist.Integral()
+        for x in self.mc_samples:
+            if x=='DY':
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.04)#DY x-sec uncertainty
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.1)#DY pT re-weighting
+            if x=='Diboson':
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.05)#Diboson x-sec uncertainty 
+        return mc_err
 
 
     def make_sum(self, rebin=1, preprocess=None, folder=''):
@@ -501,7 +522,7 @@ class Plotter(object):
         mc_sum_view = self.make_sum(rebin, preprocess, folder)
         mc_err = mc_sum_view.Get(variable)
         mc_err.Sumw2()
-        #mc_err = SystematicsView.add_error(mc_err,  0.3)
+        mc_err = self.make_syserr(mc_err, variable, folder)
         mc_err.SetMarkerStyle(0)
         mc_err.SetLineColor(1)
         mc_err.SetFillStyle('3002')
