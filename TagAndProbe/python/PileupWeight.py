@@ -7,10 +7,15 @@ https://twiki.cern.ch/twiki/bin/view/CMS/PileupJSONFileforData
 from FinalStateAnalysis.Utilities.FileInPath import FileInPath
 import ROOT
 
-pu_file = FileInPath("FinalStateAnalysis/TagAndProbe/data/Pileup.root").full_path()
-
 class PileupWeight(object):
-    def __init__(self, mctag, *datafiles):
+    def __init__(self, mctag, year, *datafiles):
+
+        if year=='2016':
+            pu_file = FileInPath("FinalStateAnalysis/TagAndProbe/data/2016/Pileup.root").full_path()
+        elif year=='2017':
+            pu_file = FileInPath("FinalStateAnalysis/TagAndProbe/data/2017/Pileup.root").full_path()
+        elif year=='2018':
+            pu_file = FileInPath("FinalStateAnalysis/TagAndProbe/data/2018/Pileup.root").full_path()
 
         ROOT.TH1.AddDirectory(False)
         self.mc = None

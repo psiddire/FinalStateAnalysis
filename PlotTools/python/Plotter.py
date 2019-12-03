@@ -218,6 +218,12 @@ class Plotter(object):
             jets_text = "#mu#mu#mu"
         elif 'mumue' in channel:
             jets_text = "#mu#mu e"
+        elif 'eetau' in channel:
+            jets_text = "ee#tau_{h}"
+        elif 'eemu' in channel:
+            jets_text = "ee#mu"
+        elif 'eee' in channel:
+            jets_text = "eee"
         elif 'mutau' in channel:
             if 'h' in channel:
                 jets_text = "#mu#tau_{h}"

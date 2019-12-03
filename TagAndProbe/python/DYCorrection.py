@@ -1,4 +1,4 @@
-'''                                                                                                                                                                                                                                                                         Interface for DY pT correction
+'''                                                                                                                                                                                                                                                                         IInterface for DY pT correction
 ===================================================
 Author: Prasanna Kumar Siddireddy
 '''
@@ -7,9 +7,15 @@ from correctionloader import CorrectionLoader
 import os
 import ROOT 
 
-def make_DYreweight():
+def make_DYreweight_2018():
     return DYCorrection(
-        os.path.join(os.environ['fsa'], 'TagAndProbe/data/zpt_weights_2018.root'),
+        os.path.join(os.environ['fsa'], 'TagAndProbe/data/2018/zpt_weights_2018.root'),
+        "zptmass_histo"   
+    )
+
+def make_DYreweight_2016():
+    return DYCorrection(
+        os.path.join(os.environ['fsa'], 'TagAndProbe/data/2016/zpt_weights_2016_BtoH.root'),
         "zptmass_histo"   
     )
 
