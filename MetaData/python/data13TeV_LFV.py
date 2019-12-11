@@ -22,7 +22,7 @@ data_name_map = {}
 
 datadefs = {}
 
-
+# 2018
 datadefs["GluGlu_LFV_HToETau_M125_TuneCP5_PSweights_13TeV_powheg_pythia8_-102X_upgrade2018_realistic_v15-v1"] = {
       'analyses': ['LFV'],
       'datasetpath': '/GluGlu_LFV_HToETau_M125_TuneCP5_PSweights_13TeV_powheg_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
@@ -51,7 +51,35 @@ datadefs["VBF_LFV_HToMuTau_M125_TuneCP5_PSweights_13TeV_powheg_pythia8_-102X_upg
       'calibrationTarget': 'RunIIAutumn18MiniAOD',
       'x_sec': 3.782*0.01,          
 }
-
+# 2016
+datadefs["GluGlu_LFV_HToETau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses': ['LFV'],
+      'datasetpath': '/GluGlu_LFV_HToETau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu': 'PUMoriond17',
+      'calibrationTarget': 'RunIISummer16MiniAODv3',
+      'x_sec': 48.58*0.01,
+}
+datadefs["VBF_LFV_HToETau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
+      'analyses': ['LFV'],
+      'datasetpath': '/VBF_LFV_HToETau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+      'pu': 'PUMoriond17',
+      'calibrationTarget': 'RunIISummer16MiniAODv3',
+      'x_sec': 3.782*0.01,
+}
+datadefs["GluGlu_LFV_HToMuTau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses': ['LFV'],
+      'datasetpath': '/GluGlu_LFV_HToMuTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu': 'PUMoriond17',
+      'calibrationTarget': 'RunIISummer16MiniAODv3',
+      'x_sec': 48.58*0.01,
+}
+datadefs["VBF_LFV_HToMuTau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses': ['LFV'],
+      'datasetpath': '/VBF_LFV_HToMuTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu': 'PUMoriond17',
+      'calibrationTarget': 'RunIISummer16MiniAODv3',
+      'x_sec': 3.782*0.01,
+}
 
 # 2018
 datadefs["DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8_-102X_upgrade2018_realistic_v15-v1"] = {
@@ -104,6 +132,13 @@ datadefs["DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17_
       'calibrationTarget' : 'RunIISummer16MiniAODv3',
       'x_sec' : 5343.0,
 }
+datadefs["DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 18610.0,
+}
 datadefs["DY1JetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
       'analyses' : ['LFV'],
       'datasetpath' : '/DY1JetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
@@ -133,7 +168,7 @@ datadefs["DY4JetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17
       'x_sec' :  44.03,
 }
 
-
+# 2018
 datadefs["WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8_-102X_upgrade2018_realistic_v15-v2"] = {
       'analyses' : ['LFV'],
       'datasetpath' : '/WJetsToLNu_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
@@ -174,9 +209,51 @@ datadefs["WGToLNuG_TuneCP5_13TeV-madgraphMLM-pythia8_-102X_upgrade2018_realistic
       'datasetpath' : '/WGToLNuG_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
       'pu' : 'upgrade2018',
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
+      'x_sec' : 510.6,
+}
+# 2016
+datadefs["WJetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/WJetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 52940.0,
+}
+datadefs["W1JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/W1JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 8104.0,
+}
+datadefs["W2JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/W2JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 992.5,
+}
+datadefs["W3JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/W3JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 544.3,
+}
+datadefs["W4JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/W4JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
       'x_sec' : 464.4,
 }
-
+datadefs["WGToLNuG_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/WGToLNuG_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 510.6,
+}
 
 #2018
 datadefs["ZZ_TuneCP5_13TeV-pythia8_-102X_upgrade2018_realistic_v15-v2"]={
@@ -223,7 +300,7 @@ datadefs["WW_TuneCUETP8M1_13TeV-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-
       'x_sec' : 75.88,
 }
 
-
+# 2018
 datadefs["TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1"] = {
       'analyses' : ['LFV'],
       'datasetpath' : '/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
@@ -245,8 +322,16 @@ datadefs["TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
       'x_sec': 377.96,
 }
+# 2016
+datadefs["TT_TuneCUETP8M2T4_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec': 831.76,
+}
 
-
+# 2018
 datadefs["ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1"] = {
       'analyses' : ['LFV'],
       'datasetpath' : '/ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext1-v1/MINIAODSIM',
@@ -275,8 +360,37 @@ datadefs["ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythi
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
       'x_sec': 136.02,
 }
+# 2016
+datadefs["ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec': 35.85,
+}
+datadefs["ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3_ext1-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec': 35.85,
+}
+datadefs["ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec': 80.95,
+}
+datadefs["ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec': 136.02,
+}
 
-
+# 2018
 datadefs["EWKZ2Jets_ZToLL_M-50_TuneCP5_PSweights_13TeV-madgraph-pythia8_-102X_upgrade2018_realistic_v15-v1"] = {
       'analyses' : ['LFV'],
       'datasetpath' : '/EWKZ2Jets_ZToLL_M-50_TuneCP5_PSweights_13TeV-madgraph-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
@@ -305,8 +419,37 @@ datadefs["EWKWMinus2Jets_WToLNu_M-50_TuneCP5_13TeV-madgraph-pythia8_-102X_upgrad
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
       'x_sec' : 20.25,
 }
+# 2016
+datadefs["EWKZ2Jets_ZToLL_M-50_13TeV-madgraph-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v3"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/EWKZ2Jets_ZToLL_M-50_13TeV-madgraph-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v3/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 3.987,
+}
+datadefs["EWKZ2Jets_ZToNuNu_13TeV-madgraph-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/EWKZ2Jets_ZToNuNu_13TeV-madgraph-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 10.01,
+}
+datadefs["EWKWPlus2Jets_WToLNu_M-50_13TeV-madgraph-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/EWKWPlus2Jets_WToLNu_M-50_13TeV-madgraph-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 25.62,
+}
+datadefs["EWKWMinus2Jets_WToLNu_M-50_13TeV-madgraph-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/EWKWMinus2Jets_WToLNu_M-50_13TeV-madgraph-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 20.25,
+}
 
-
+# 2018
 datadefs["GluGluHToTauTau_M125_13TeV_powheg_pythia8_-102X_upgrade2018_realistic_v15-v2"] = {
       'analyses' : ['LFV'],
       'datasetpath' : '/GluGluHToTauTau_M125_13TeV_powheg_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v2/MINIAODSIM',
@@ -349,8 +492,44 @@ datadefs["ttHToTauTau_M125_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realis
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
       'x_sec' : 0.507*0.0627,
 }
+# 2016
+datadefs["GluGluHToTauTau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v3"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/GluGluHToTauTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v3/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 48.58*0.0627,
+}
+datadefs["VBFHToTauTau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/VBFHToTauTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 3.782*0.0627,
+}
+datadefs["WplusHToTauTau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/WplusHToTauTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 0.840*0.0627,
+}
+datadefs["WminusHToTauTau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/WminusHToTauTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 0.533*0.0627,
+}
+datadefs["ZHToTauTau_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/ZHToTauTau_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 0.884*0.0627,
+}
 
-
+# 2018
 datadefs["GluGluHToWWTo2L2Nu_M125_13TeV_powheg2_JHUGenV714_pythia8_-102X_upgrade2018_realistic_v15-v1"] = {
       'analyses' : ['LFV'],
       'datasetpath' : '/GluGluHToWWTo2L2Nu_M125_13TeV_powheg2_JHUGenV714_pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
@@ -365,109 +544,272 @@ datadefs["VBFHToWWTo2L2Nu_M125_13TeV_powheg2_JHUGenV714_pythia8_-102X_upgrade201
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
       'x_sec' : 3.782*0.0227,
 }
+# 2016
+datadefs["GluGluHToWWTo2L2Nu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/GluGluHToWWTo2L2Nu_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 48.58*0.0227,
+}
+datadefs["VBFHToWWTo2L2Nu_M125_13TeV_powheg_pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/VBFHToWWTo2L2Nu_M125_13TeV_powheg_pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v2/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec' : 3.782*0.0227,
+}
 
 
+datadefs['QCD_Pt-20toInf_MuEnrichedPt15_TuneCP5_13TeV_pythia8_v14-v1'] = {
+      'analyses': ['LFV'],
+      'datasetpath': '/QCD_Pt-20toInf_MuEnrichedPt15_TuneCP5_13TeV_pythia8/RunIIFall17MiniAODv2-PU2017RECOSIMstep_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM',
+      'pu': 'PUMoriond17',
+      'calibrationTarget': 'RunIISummer16MiniAODv3',
+      'x_sec': 720648000.0,
+}
+
+
+# 2018
 datadefs['embedded_EmbeddingRun2018A_MuTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018A/MuTauFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 315257,
-      'lastRun' : 316995,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018B_MuTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018B/MuTauFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 317080,
-      'lastRun' : 319077,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018C_MuTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018C/MuTauFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 319337,
-      'lastRun' : 320065,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018D_MuTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018D/MuTauFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 320673,
-      'lastRun' : 325172,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
+# 2016
+datadefs['embedded_EmbeddingRun2016B_MuTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016B/MuTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016C_MuTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016C/MuTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016D_MuTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016D/MuTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016E_MuTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016E/MuTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016F_MuTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016F/MuTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016G_MuTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016G/MuTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016H_MuTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016H/MuTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt",
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
 
-
+# 2018
 datadefs['embedded_EmbeddingRun2018A_ElTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018A/ElTauFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 315257,
-      'lastRun' : 316995,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018B_ElTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018B/ElTauFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 317080,
-      'lastRun' : 319077,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018C_ElTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018C/ElTauFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 319337,
-      'lastRun' : 320065,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018D_ElTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018D/ElTauFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 320673,
-      'lastRun' : 325172,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
+# 2016
+datadefs['embedded_EmbeddingRun2016B_ElTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016B/ElTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016C_ElTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016C/ElTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016D_ElTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016D/ElTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016E_ElTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016E/ElTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016F_ElTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016F/ElTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016G_ElTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016G/ElTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016H_ElTauFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016H/ElTauFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
 
 
+# 2018
 datadefs['embedded_EmbeddingRun2018A_ElMuFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018A/ElMuFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 315257,
-      'lastRun' : 316995,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018B_ElMuFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018B/ElMuFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 317080,
-      'lastRun' : 319077,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018C_ElMuFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018C/ElMuFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 319337,
-      'lastRun' : 320065,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
 datadefs['embedded_EmbeddingRun2018D_ElMuTauFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018D/ElMuFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
-      'lumi_mask' : "FinalStateAnalysis/RecoTools/data/masks/Cert_314472-325175_13TeV_17SeptEarlyReReco2018ABC_PromptEraD_Collisions18_JSON.txt",
-      'firstRun' : 320673,
-      'lastRun' : 325172,
+      'x_sec': 1.0,
+      'pu' : 'upgrade2018',
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
-
+# 2016
+datadefs['embedded_EmbeddingRun2016B_ElMuFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016B/ElMuFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016C_ElMuFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016C/ElMuFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016D_ElMuFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016D/ElMuFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016E_ElMuFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016E/ElMuFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016F_ElMuFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016F/ElMuFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016G_ElMuFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016G/ElMuFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
+datadefs['embedded_EmbeddingRun2016H_ElMuFinalState'] = {
+      'datasetpath' : "/EmbeddingRun2016H/ElMuFinalState-imputSep16DoubleMu_mirror_miniAOD-v2/USER",
+      'x_sec': 1.0,
+      'pu' : 'PUMoriond17',
+      'analyses' : ['LFV'],
+      'calibrationTarget' : 'RunIISummer16MiniAODv3'
+}
 
 # 2018
 datadefs['data_EGamma_Run2018A-17Sep2018'] = {

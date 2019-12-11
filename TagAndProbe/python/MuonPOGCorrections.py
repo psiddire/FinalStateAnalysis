@@ -75,6 +75,12 @@ def make_muon_pog_IsoMu24_2018():
             _DATA_FILES['2018']['Trigger'],
             ["IsoMu24_PtEtaBins/pt_abseta_ratio", "IsoMu24_PtEtaBins/pt_abseta_ratio"], 8950.878, 50811.128)
 
+def make_muon_pog_Mu50_2018():
+    ''' trigger efficiencies in DATA; weigthed by lumi for two sets available , viz Run 316361 (8950.878 /pb) and Run 316361 (50811.128 /pb); more info in MUON POG twiki '''
+    return MuonPOGCorrectionTrig2D_weighted(
+            _DATA_FILES['2018']['Trigger'],
+            ["Mu50_OR_OldMu100_OR_TkMu100_PtEtaBins/pt_abseta_ratio", "Mu50_OR_OldMu100_OR_TkMu100_PtEtaBins/pt_abseta_ratio"], 8950.878, 50811.128)
+
 # 2016
 def make_muon_pog_PFTight_2016():
     return MuonPOGCorrectionID2D_2016(_DATA_FILES['2016']['ID'],
@@ -244,8 +250,10 @@ if __name__ == "__main__":
     make_muon_pog_TightIso_2018()
     make_muon_pog_LooseIso_2018()
     make_muon_pog_IsoMu24_2018()
+    make_muon_pog_Mu50_2018
     make_muon_pog_PFTight_2016()
     make_muon_pog_PFMedium_2016()
     make_muon_pog_PFLoose_2016()
     make_muon_pog_TightIso_2016()
     make_muon_pog_LooseIso_2016()
+    

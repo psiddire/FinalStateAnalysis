@@ -106,9 +106,11 @@ def data_views(files, lumifiles, forceLumi=-1):
         intlumi = lumi_files[sample]
         weight = 1
         if intlumi:
-            weight = datalumi/intlumi
+            weight = datalumi/intlumi # 0.5 is temporary (need to investigate for 2016)
         if 'data' in sample:
             weight = 1
+        if 'embed' in sample:
+            weight = 1 # 2 is temporary (need to investigate for 2016)
         log.warning("Building sample: %s => int lumi: %0.f pb-1. Weight => %0.2E", sample, intlumi, weight)
 
         view = views.ScaleView(raw_file, weight)

@@ -18,6 +18,7 @@ el_Ele35_2018 = GraphReaderEleSF(os.path.join(os.environ['fsa'], 'TagAndProbe/da
 el_IdIso_2018 = GraphReaderEleSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/2018/Electron_Run2018_IdIso.root'))
 
 el_Ele25_2016 = GraphReaderEleSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/2016/Electron_Run2016_legacy_Ele25.root'))
+el_IdIso_2016 = GraphReaderEleSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/2016/Electron_Run2016_legacy_IdIso.root'))
 
 # Data Directories
 _DATA_DIR_2018 = os.path.join(os.environ['CMSSW_BASE'], 'src',
@@ -65,7 +66,7 @@ def make_egamma_pog_electronID90_2016():
         "EGamma_SF2D"
     )
 
-def make_egamma_pog_electronID90_2016():
+def make_egamma_pog_electronID90noiso_2016():
     return EGammaPOGCorrection(
         _DATA_FILES['2016']['ID90noiso'],    
         "EGamma_SF2D"
@@ -92,4 +93,4 @@ if __name__ == "__main__":
     make_egamma_pog_electronID80_2016()
     make_egamma_pog_electronID80noiso_2016()
     make_egamma_pog_electronID90_2016()
-    make_egamma_pog_electronID90_2016()
+    make_egamma_pog_electronID90noiso_2016()

@@ -125,6 +125,10 @@ class Plotter(object):
         hist_int = {}
         tot_int = 0
         sys_err = 0
+        mc_err = SystematicsView.add_error(mc_err, 0.02) # Trigger uncertainty
+        mc_err = SystematicsView.add_error(mc_err, 0.02) # Electron uncertainty
+        mc_err = SystematicsView.add_error(mc_err, 0.02) # Muon uncertainty
+        mc_err = SystematicsView.add_error(mc_err, 0.023) # Luminosity uncertainty
         for x in self.mc_samples:
             mc_view = self.get_view(x)
             if folder:
@@ -133,11 +137,18 @@ class Plotter(object):
             tot_int = tot_int + mc_hist.Integral()
             hist_int[x] = mc_hist.Integral()
         for x in self.mc_samples:
-            if x=='DY':
-                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.04)#DY x-sec uncertainty
-                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.1)#DY pT re-weighting
-            if x=='Diboson':
-                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.05)#Diboson x-sec uncertainty 
+            if x=='DY' and tot_int!=0:
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.04) # DY x-sec uncertainty
+            elif x=='Diboson' and tot_int!=0:
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.05) # Diboson x-sec uncertainty
+            elif x=='TT' and tot_int!=0:
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.06) # TTbar x-sec uncertainty
+            elif x=='EWK' and tot_int!=0:
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.04) # EWK x-sec uncertainty
+            elif x=='QCD' and tot_int!=0:
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.30) # QCD uncertainty
+            else:
+                mc_err = SystematicsView.add_error(mc_err, 0)
         return mc_err
 
 
@@ -199,7 +210,7 @@ class Plotter(object):
         return [legend] 
 
 
-    def add_cms_blurb(self, sqrts, jets, channel, preliminary=True, lumiformat='%0.1f'):
+    def add_cms_blurb(self, sqrts, jets, year, channel, preliminary=True, lumiformat='%0.1f'):
         ''' Add the CMS blurb '''
         latex = ROOT.TLatex()
         latex.SetNDC()
@@ -210,8 +221,15 @@ class Plotter(object):
         label_text = "#bf{CMS}"
         if preliminary:
             label_text += "#bf{ Preliminary}"
-        data_text = (lumiformat + " fb^{-1}") % (59.3)
-        data_text += " (2017, %i TeV)" % sqrts
+        if year=='2016':
+            lumi = 35.9
+        elif year=='2017':
+            lumi = 41.8
+        elif year=='2018':
+            lumi = 59.3
+        data_text = (lumiformat + " fb^{-1}") % (lumi)
+        data_text += " (%i," % int(year)
+        data_text += " %i TeV)" % sqrts
         if 'mumutau' in channel:
             jets_text = "#mu#mu#tau_{h}"
         elif 'mumumu' in channel:
@@ -502,7 +520,7 @@ class Plotter(object):
 
     def plot_mc_vs_data(self, folder, signal, variable, rebin=1, xaxis='',
                         leftside=True, xrange=None, preprocess=None,
-                        show_ratio=False, ratio_range=0.5, sort=False, blind_region=False, control='', jets='', channel=''):
+                        show_ratio=False, ratio_range=0.5, sort=False, blind_region=False, control='', jets='', year='', channel=''):
         ''' Compare Monte Carlo to data '''
         mc_stack_view = self.make_stack(rebin, preprocess, folder, sort)
         mc_stack = mc_stack_view.Get(variable)
@@ -538,7 +556,7 @@ class Plotter(object):
 
         signalview = []
         mymax = 0
-        sigscale = 20
+        sigscale = 10
         if signal:
             for sig in signal:
                 signal_view = self.get_view(sig)
@@ -594,7 +612,7 @@ class Plotter(object):
         else:
             self.add_legend_single([data, mc_stack], leftside, entries = len(mc_stack.GetHists()) + 1)
 
-        self.add_cms_blurb(13, jets, channel)
+        self.add_cms_blurb(13, jets, year, channel)
         if show_ratio:
             self.add_ratio_plot(data, mc_stack, mc_err, xaxis, xrange, ratio_range=0.75)
 
