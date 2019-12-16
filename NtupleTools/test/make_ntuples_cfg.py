@@ -851,6 +851,7 @@ for fs in additional_fs:
 if options.era=="2018" or options.era=="2018prompt":
   from FinalStateAnalysis.NtupleTools.customization_jets import preJets
   from FinalStateAnalysis.NtupleTools.customization_metjets import preMETFromJES
+  from FinalStateAnalysis.NtupleTools.customization_metuesjets import preMETFromUES
 if options.era=="2017":
   from FinalStateAnalysis.NtupleTools.customization_2017jets import preJets
   from FinalStateAnalysis.NtupleTools.customization_2017metjets import preMETFromJES
@@ -858,6 +859,7 @@ if options.era=="2017":
 if options.era=="2016":
   from FinalStateAnalysis.NtupleTools.customization_2016jets import preJets
   from FinalStateAnalysis.NtupleTools.customization_2016metjets import preMETFromJES
+  from FinalStateAnalysis.NtupleTools.customization_2016metuesjets import preMETFromUES
 
 fs_daughter_inputs['jets']  = preJets(process,
                                      fs_daughter_inputs['jets'],

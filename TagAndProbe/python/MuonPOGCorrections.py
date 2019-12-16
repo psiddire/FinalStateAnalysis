@@ -250,7 +250,7 @@ if __name__ == "__main__":
     make_muon_pog_TightIso_2018()
     make_muon_pog_LooseIso_2018()
     make_muon_pog_IsoMu24_2018()
-    make_muon_pog_Mu50_2018
+    make_muon_pog_Mu50_2018()
     make_muon_pog_PFTight_2016()
     make_muon_pog_PFMedium_2016()
     make_muon_pog_PFLoose_2016()

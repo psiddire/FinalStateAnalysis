@@ -46,7 +46,6 @@ then
     export HDF5_DIR=$hdf5
 fi
 
-
 # Don't require a scram build to get updated scripts
 export PATH=$fsa/Utilities/scripts:$PATH
 export PATH=$fsa/StatTools/scripts:$PATH

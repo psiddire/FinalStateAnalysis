@@ -8,7 +8,7 @@ Author: Evan K. Friis, UW Madison
 
 '''
 
-from RecoLuminosity.LumiDB import argparse
+import argparse
 import logging
 import multiprocessing
 import os
