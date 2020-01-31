@@ -254,8 +254,8 @@ class GraphReaderTrackingEta(object):
         #dict is fine for small number of bins, 
         #for larger ones use sorted list and binary search
         input_file= root_open(filename)
-        if  not input_file:
-               sys.stderr.write("Can't open file: %s\n" % filename)
+        if not input_file:
+            sys.stderr.write("Can't open file: %s\n" % filename)
         gr1 = input_file.Get(path_in_file)
         npoint1=gr1.GetN()
         eff1 = []
@@ -283,4 +283,37 @@ class GraphReaderTrackingEta(object):
             if etamin <= eta < etamax:
                 return eta_vals
         raise ValueError("pt or eta out of boundaries for correction range: %s %s" %(pt, abseta))
+
+
+class GraphReaderFES(object):
+    """Loads a graph with trigger efficiency from data"""
+    def __init__(self, filename, path_in_file='fes'):
+        self.table = {}
+        input_file = root_open(filename)
+        if not input_file:
+            sys.stderr.write("Can't open file: %s\n" % filename)
+        gr1 = input_file.Get(path_in_file)
+        npoint1 = gr1.GetN()
+        eff1 = []
+        for n in range(0, npoint1):
+            xval = ROOT.Double(0)
+            yval = ROOT.Double(0)
+            gr1.GetPoint(n, xval, yval)
+            xevalp = gr1.GetErrorXhigh(n)
+            xevalm = gr1.GetErrorXlow(n)
+            yevalp = gr1.GetErrorYhigh(n)
+            yevalm = gr1.GetErrorYlow(n)
+            self.table[n] = yval, yevalp, yevalm
+    
+    def __call__(self, eta_dm):
+        if eta_dm == 'EBDM0':
+            return self.table[0]
+        elif eta_dm == 'EBDM1':
+            return self.table[1]
+        elif eta_dm == 'EEDM0':
+            return self.table[2]
+        elif eta_dm == 'EEDM1':
+            return self.table[3]
+        else:
+            raise ValueError("Eta DM not in table: %s" %(eta_dm))
                     

@@ -98,6 +98,44 @@ class FunctorFromMVA(object):
         return retval
 
 
+class FunctorFromMVACat(object):
+    def __init__(self, name, xml_filename, *variables, **kwargs):
+        self.reader    = ROOT.TMVA.Reader( "!Color:Silent=%s:Verbose=%s" % (kwargs.get('silent','T'), kwargs.get('verbose','F')))
+        self.var_map   = {}
+        self.name      = name
+        self.variables = variables
+        self.xml_filename = xml_filename
+        i = 0
+        for var in variables:
+            if i < 8:
+                self.var_map[var] = array.array('f',[0])
+                self.reader.AddVariable(var, self.var_map[var])
+            i+=1
+        self.var_map['njets'] = array.array('i',[0])
+        self.reader.AddSpectator('njets', self.var_map['njets'])
+        self.var_map['vbfMass'] = array.array('f',[0])
+        self.reader.AddSpectator('vbfMass', self.var_map['vbfMass'])
+        self.reader.BookMVA(name, xml_filename)
+
+    def evaluate_(self): #so I can profile the time needed
+        return self.reader.EvaluateMVA(self.name)
+
+    @memo_last
+    def __call__(self, **kvars):
+        #kvars enforces that we use the proper vars
+        if not (
+                 all(name in self.variables for name in kvars.keys()) and \
+                 all(name in kvars.keys() for name in self.variables)
+                ):
+            raise Exception("Wrong variable names. Available variables: %s" % self.variables.__repr__())
+        for name, val in kvars.iteritems():
+            self.var_map[name][0] = val
+        retval = self.evaluate_() #reader.EvaluateMVA(self.name)
+        #if retval == 1:
+        #    print "returning 1 in %s, kvars: %s" % (self.xml_filename, kvars.items())
+        return retval
+
+
 class MultiFunctorFromMVA(object):
     '''Phil's diboson subtraction implementation'''
     def __init__(self, name, data_and_lumi, mcs_and_lumis, *variables, **kwargs):
