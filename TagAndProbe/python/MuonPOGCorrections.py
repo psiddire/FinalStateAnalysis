@@ -3,6 +3,7 @@ Interface to official corrections from the muon POG
 ===================================================
 Author: Prasanna Kumar Siddireddy
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonReferenceEffs2018
+https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonReferenceEffs2017
 https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonReferenceEffs2016
 '''
 
@@ -15,6 +16,10 @@ from correctionloader import CorrectionLoader
 # Update when 2018 tracking numbers are available (Tracking)
 mu_trackingEta_2018 = GraphReaderTrackingEta(
     os.path.join(os.environ['fsa'], 'TagAndProbe/data/2018/fits.root'), 'ratio_eff_eta3_dr030e030_corr'
+)
+
+mu_trackingEta_2017 = GraphReaderTrackingEta(
+    os.path.join(os.environ['fsa'], 'TagAndProbe/data/2017/fits_muon_trk_2017.root'), 'ratio_eff_eta3_dr030e030_corr'
 )
 
 mu_trackingEta_2016 = GraphReaderTrackingEta(
@@ -34,6 +39,9 @@ mIDIso = GraphReaderMuonSF(os.path.join(os.environ['fsa'], 'TagAndProbe/data/201
 _DATA_DIR_2018 = os.path.join(os.environ['CMSSW_BASE'], 'src',
                               "FinalStateAnalysis", "TagAndProbe", "data", "2018")
 
+_DATA_DIR_2017 = os.path.join(os.environ['CMSSW_BASE'], 'src',
+                              "FinalStateAnalysis", "TagAndProbe", "data", "2017")
+
 _DATA_DIR_2016 = os.path.join(os.environ['CMSSW_BASE'], 'src',
                               "FinalStateAnalysis", "TagAndProbe", "data", "2016")
 
@@ -45,6 +53,11 @@ _DATA_FILES = {
         'Trigger': [os.path.join(_DATA_DIR_2018, 'EfficienciesAndSF_2018Data_BeforeMuonHLTUpdate.root'),
                     os.path.join(_DATA_DIR_2018, 'EfficienciesAndSF_2018Data_AfterMuonHLTUpdate.root')]
     },
+    '2017' : {
+        'ID'   : os.path.join(_DATA_DIR_2017, 'RunBCDEF_SF_ID.root'),
+        'Iso'    : os.path.join(_DATA_DIR_2017, 'RunBCDEF_SF_ISO.root'),
+        'Trigger': os.path.join(_DATA_DIR_2017, 'EfficienciesAndSF_RunBtoF_Nov17Nov2017.root')
+    },
     '2016' : {
         'ID'      : [os.path.join(_DATA_DIR_2016, 'RunBCDEF_SF_ID.root'), os.path.join(_DATA_DIR_2016, 'RunGH_SF_ID.root')],
         'Iso'     : [os.path.join(_DATA_DIR_2016, 'RunBCDEF_SF_ISO.root'), os.path.join(_DATA_DIR_2016, 'RunGH_SF_ISO.root')],
@@ -54,69 +67,133 @@ _DATA_FILES = {
 
 # 2018
 def make_muon_pog_PFTight_2018():
-    return MuonPOGCorrectionID2D(_DATA_FILES['2018']['ID'], "NUM_TightID_DEN_TrackerMuons_pt_abseta")
-
+    return MuonPOGCorrectionID2D(
+        _DATA_FILES['2018']['ID'], 
+        "NUM_TightID_DEN_TrackerMuons_pt_abseta"
+    )
 def make_muon_pog_PFMedium_2018():
-    return MuonPOGCorrectionID2D(_DATA_FILES['2018']['ID'], "NUM_MediumID_DEN_TrackerMuons_pt_abseta")
-
+    return MuonPOGCorrectionID2D(
+        _DATA_FILES['2018']['ID'], 
+        "NUM_MediumID_DEN_TrackerMuons_pt_abseta"
+    )
 def make_muon_pog_PFLoose_2018():
-    return MuonPOGCorrectionID2D(_DATA_FILES['2018']['ID'], "NUM_LooseID_DEN_TrackerMuons_pt_abseta")
-
+    return MuonPOGCorrectionID2D(
+        _DATA_FILES['2018']['ID'], 
+        "NUM_LooseID_DEN_TrackerMuons_pt_abseta"
+    )
 def make_muon_pog_TightIso_2018(MuonID):
-    return MuonPOGCorrectionTightIso2D(_DATA_FILES['2018']['Iso'], MuonID,
-        ["NUM_TightRelIso_DEN_MediumID_pt_abseta", "NUM_TightRelIso_DEN_TightIDandIPCut_pt_abseta"])
-
+    return MuonPOGCorrectionTightIso2D(
+        _DATA_FILES['2018']['Iso'], MuonID,
+        ["NUM_TightRelIso_DEN_MediumID_pt_abseta", 
+         "NUM_TightRelIso_DEN_TightIDandIPCut_pt_abseta"]
+    )
 def make_muon_pog_LooseIso_2018(MuonID):
     return MuonPOGCorrectionLooseIso2D(
         _DATA_FILES['2018']['Iso'], MuonID,
         ["NUM_LooseRelIso_DEN_LooseID_pt_abseta",
         "NUM_LooseRelIso_DEN_MediumID_pt_abseta",
-        "NUM_LooseRelIso_DEN_TightIDandIPCut_pt_abseta"])
-
+        "NUM_LooseRelIso_DEN_TightIDandIPCut_pt_abseta"]
+    )
 def make_muon_pog_IsoMu24_2018():
-    ''' trigger efficiencies in DATA; weigthed by lumi for two sets available , viz Run 316361 (8950.878 /pb) and Run 316361 (50811.128 /pb); more info in MUON POG twiki '''
+    ''' Before and after Run 316361 '''
     return MuonPOGCorrectionTrig2D_weighted(
-            _DATA_FILES['2018']['Trigger'],
-            ["IsoMu24_PtEtaBins/pt_abseta_ratio", "IsoMu24_PtEtaBins/pt_abseta_ratio"], 8950.878, 50811.128)
-
+        _DATA_FILES['2018']['Trigger'],
+        ["IsoMu24_PtEtaBins/pt_abseta_ratio", 
+         "IsoMu24_PtEtaBins/pt_abseta_ratio"], 
+        8950.878, 50811.128
+    )
 def make_muon_pog_Mu50_2018():
-    ''' trigger efficiencies in DATA; weigthed by lumi for two sets available , viz Run 316361 (8950.878 /pb) and Run 316361 (50811.128 /pb); more info in MUON POG twiki '''
     return MuonPOGCorrectionTrig2D_weighted(
-            _DATA_FILES['2018']['Trigger'],
-            ["Mu50_OR_OldMu100_OR_TkMu100_PtEtaBins/pt_abseta_ratio", "Mu50_OR_OldMu100_OR_TkMu100_PtEtaBins/pt_abseta_ratio"], 8950.878, 50811.128)
-
+        _DATA_FILES['2018']['Trigger'],
+        ["Mu50_OR_OldMu100_OR_TkMu100_PtEtaBins/pt_abseta_ratio", 
+         "Mu50_OR_OldMu100_OR_TkMu100_PtEtaBins/pt_abseta_ratio"], 
+        8950.878, 50811.128
+    )
+# 2017
+def make_muon_pog_PFTight_2017():
+    return MuonPOGCorrectionID2D(
+        _DATA_FILES['2017']['ID'],
+        "NUM_TightID_DEN_genTracks_pt_abseta"
+    )
+def make_muon_pog_PFMedium_2017():
+    return MuonPOGCorrectionID2D(
+        _DATA_FILES['2017']['ID'],
+        "NUM_MediumID_DEN_genTracks_pt_abseta"
+    )
+def make_muon_pog_PFLoose_2017():
+    return MuonPOGCorrectionID2D(
+        _DATA_FILES['2017']['ID'],
+        "NUM_LooseID_DEN_genTracks_pt_abseta"
+    )
+def make_muon_pog_TightIso_2017(MuonID):
+    return MuonPOGCorrectionTightIso2D(
+        _DATA_FILES['2017']['Iso'], MuonID,
+        ["NUM_TightRelIso_DEN_MediumID_pt_abseta",
+         "NUM_TightRelIso_DEN_TightIDandIPCut_pt_abseta"]
+    )
+def make_muon_pog_LooseIso_2017(MuonID):
+    return MuonPOGCorrectionLooseIso2D(
+        _DATA_FILES['2017']['Iso'], MuonID,
+        ["NUM_LooseRelIso_DEN_LooseID_pt_abseta",
+         "NUM_LooseRelIso_DEN_MediumID_pt_abseta",
+         "NUM_LooseRelIso_DEN_TightIDandIPCut_pt_abseta"]
+    )
+def make_muon_pog_IsoMu27_2017():
+    return MuonPOGCorrectionTrig2D_2017(
+        _DATA_FILES['2017']['Trigger'],
+        "IsoMu27_PtEtaBins/pt_abseta_ratio"
+    )
+def make_muon_pog_Mu50_2017():
+    return MuonPOGCorrectionTrig2D_2017(
+        _DATA_FILES['2017']['Trigger'],
+        "Mu50_PtEtaBins/pt_abseta_ratio"
+    )
 # 2016
 def make_muon_pog_PFTight_2016():
-    return MuonPOGCorrectionID2D_2016(_DATA_FILES['2016']['ID'],
-        ["NUM_TightID_DEN_genTracks_eta_pt", "NUM_TightID_DEN_genTracks_eta_pt"], 20.182, 16.146)
-
+    return MuonPOGCorrectionID2D_2016(
+        _DATA_FILES['2016']['ID'],
+        ["NUM_TightID_DEN_genTracks_eta_pt", 
+         "NUM_TightID_DEN_genTracks_eta_pt"], 
+        20.182, 16.146
+    )
 def make_muon_pog_PFMedium_2016():
-    return MuonPOGCorrectionID2D_2016(_DATA_FILES['2016']['ID'],
-        ["NUM_TightID_DEN_genTracks_eta_pt", "NUM_TightID_DEN_genTracks_eta_pt"], 20.182, 16.146)
-
+    return MuonPOGCorrectionID2D_2016(
+        _DATA_FILES['2016']['ID'],
+        ["NUM_MediumID_DEN_genTracks_eta_pt", 
+         "NUM_TightID_DEN_genTracks_eta_pt"], 
+        20.182, 16.146
+    )
 def make_muon_pog_PFLoose_2016():
-    return MuonPOGCorrectionID2D_2016(_DATA_FILES['2016']['ID'],
-        ["NUM_TightID_DEN_genTracks_eta_pt", "NUM_TightID_DEN_genTracks_eta_pt"], 20.182, 16.146)
-
+    return MuonPOGCorrectionID2D_2016(
+        _DATA_FILES['2016']['ID'],
+        ["NUM_LooseID_DEN_genTracks_eta_pt", 
+         "NUM_TightID_DEN_genTracks_eta_pt"], 
+        20.182, 16.146
+    )
 def make_muon_pog_TightIso_2016(MuonID):
     return MuonPOGCorrectionTightIso2D_2016(
         _DATA_FILES['2016']['Iso'], MuonID,
         ["NUM_TightRelIso_DEN_MediumID_eta_pt",
-        "NUM_TightRelIso_DEN_TightIDandIPCut_eta_pt"], 20.182, 16.146)
-
+        "NUM_TightRelIso_DEN_TightIDandIPCut_eta_pt"], 
+        20.182, 16.146
+    )
 def make_muon_pog_LooseIso_2016(MuonID):
     return MuonPOGCorrectionLooseIso2D_2016(
         _DATA_FILES['2016']['Iso'], MuonID,
         ["NUM_LooseRelIso_DEN_LooseID_eta_pt",
         "NUM_LooseRelIso_DEN_MediumID_eta_pt",
-        "NUM_LooseRelIso_DEN_TightIDandIPCut_eta_pt"], 20.182, 16.146)
-
+        "NUM_LooseRelIso_DEN_TightIDandIPCut_eta_pt"], 
+        20.182, 16.146
+    )
 def make_muon_pog_Mu50_2016():
     return MuonPOGCorrectionTrig2D_weighted_2016(
-            _DATA_FILES['2016']['Trigger'],
-            ["Mu50_OR_TkMu50_PtEtaBins/pt_abseta_ratio", "Mu50_OR_TkMu50_PtEtaBins/pt_abseta_ratio"], 20.182, 16.146)
+        _DATA_FILES['2016']['Trigger'],
+        ["Mu50_OR_TkMu50_PtEtaBins/pt_abseta_ratio", 
+         "Mu50_OR_TkMu50_PtEtaBins/pt_abseta_ratio"], 
+        20.182, 16.146
+    )
 
-# Class ID 
+# Class ID
 class MuonPOGCorrectionID2D(object):
     def __init__(self, file, pt_abseta):
         self.file = ROOT.TFile.Open(file)
@@ -125,6 +202,7 @@ class MuonPOGCorrectionID2D(object):
         self.key = self.file.Get(self.histopath)
     def __call__(self, pt, eta):
         if pt >= 120: pt = 115.
+        if pt < 20. : pt = 20.
         self.correct_by_pt_abseta = self.key.GetBinContent(self.key.FindFixBin(pt, eta))
         return self.correct_by_pt_abseta
 
@@ -143,6 +221,7 @@ class MuonPOGCorrectionID2D_2016(object):
         self.key2 = self.file2.Get(self.histopath2)
     def __call__(self, eta, pt):
         if pt >= 120: pt = 115.
+        if pt < 20. : pt = 20.
         self.correct_by_eta_pt1 = self.key1.GetBinContent(self.key1.FindFixBin(eta, pt))
         self.correct_by_eta_pt2 = self.key2.GetBinContent(self.key2.FindFixBin(eta, pt))
         self.correct_by_eta_pt_weighted = (self.lumi1 * self.correct_by_eta_pt1 + self.lumi2 * self.correct_by_eta_pt2)/(self.lumi1 + self.lumi2)
@@ -162,6 +241,7 @@ class MuonPOGCorrectionLooseIso2D(object):
         self.key = self.file.Get(self.histopath)
     def __call__(self, pt, eta):
         if pt >= 119.: pt = 119.
+        if pt < 20. : pt = 20.
         self.correct_by_pt_abseta = self.key.GetBinContent(self.key.FindFixBin(pt, eta))
         return self.correct_by_pt_abseta
 
@@ -187,6 +267,7 @@ class MuonPOGCorrectionLooseIso2D_2016(object):
         self.key2 = self.file2.Get(self.histopath2)
     def __call__(self, eta, pt):
         if pt >= 119: pt = 119.
+        if pt < 20. : pt = 20.
         self.correct_by_eta_pt1 = self.key1.GetBinContent(self.key1.FindFixBin(eta, pt))
         self.correct_by_eta_pt2 = self.key2.GetBinContent(self.key2.FindFixBin(eta, pt))
         self.correct_by_eta_pt_weighted = (self.lumi1 * self.correct_by_eta_pt1 + self.lumi2 * self.correct_by_eta_pt2)/(self.lumi1 + self.lumi2)
@@ -203,6 +284,7 @@ class MuonPOGCorrectionTightIso2D(object):
         self.key = self.file.Get(self.histopath)
     def __call__(self, pt, eta):
         if pt >= 119.: pt = 119.
+        if pt < 20. : pt = 20.
         self.correct_by_pt_abseta = self.key.GetBinContent(self.key.FindFixBin(pt, eta))
         return self.correct_by_pt_abseta
 
@@ -251,6 +333,19 @@ class MuonPOGCorrectionTrig2D_weighted(object):
         self.correct_by_pt_abseta_weighted = (self.lumi1 * self.correct_by_pt_abseta1 + self.lumi2 * self.correct_by_pt_abseta2)/(self.lumi1 + self.lumi2)
         return self.correct_by_pt_abseta_weighted
 
+class MuonPOGCorrectionTrig2D_2017(object):
+    def __init__(self, file, pt_abseta):
+        self.filename = file
+        self.file = ROOT.TFile.Open(file)
+        self.histopath = pt_abseta
+        self.correct_by_pt_abseta = {}
+        self.key = self.file.Get(self.histopath)
+    def __call__(self, pt, eta):
+        if pt >= 1200.: pt = 1000.
+        if pt < 20. : pt = 20.
+        self.correct_by_pt_abseta =self.key.GetBinContent(self.key.FindFixBin(pt, eta))
+        return self.correct_by_pt_abseta
+
 class MuonPOGCorrectionTrig2D_weighted_2016(object):
     def __init__(self, file, pt_abseta, lumi1, lumi2):
         self.file1 = ROOT.TFile.Open(file[0])
@@ -266,6 +361,7 @@ class MuonPOGCorrectionTrig2D_weighted_2016(object):
         self.key2 = self.file2.Get(self.histopath2)
     def __call__(self, pt, eta):
         if pt >= 799: pt = 799.
+        if pt < 20. : pt = 20.
         self.correct_by_pt_abseta1 = self.key1.GetBinContent(self.key1.FindFixBin(pt, eta))
         self.correct_by_pt_abseta2 = self.key2.GetBinContent(self.key2.FindFixBin(pt, eta))
         self.correct_by_pt_abseta_weighted = (self.lumi1 * self.correct_by_pt_abseta1 + self.lumi2 * self.correct_by_pt_abseta2)/(self.lumi1 + self.lumi2)
@@ -280,6 +376,13 @@ if __name__ == "__main__":
     make_muon_pog_LooseIso_2018()
     make_muon_pog_IsoMu24_2018()
     make_muon_pog_Mu50_2018()
+    make_muon_pog_PFTight_2017()
+    make_muon_pog_PFMedium_2017()
+    make_muon_pog_PFLoose_2017()
+    make_muon_pog_TightIso_2017()
+    make_muon_pog_LooseIso_2017()
+    make_muon_pog_IsoMu27_2017()
+    make_muon_pog_Mu50_2017()
     make_muon_pog_PFTight_2016()
     make_muon_pog_PFMedium_2016()
     make_muon_pog_PFLoose_2016()

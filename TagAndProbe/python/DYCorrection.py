@@ -13,6 +13,12 @@ def make_DYreweight_2018():
         "zptmass_histo"   
     )
 
+def make_DYreweight_2017():
+    return DYCorrection(
+        os.path.join(os.environ['fsa'], 'TagAndProbe/data/2017/zptm_weights_2017_kit.root'),
+        "zptmass_histo"
+    )
+
 def make_DYreweight_2016():
     return DYCorrection(
         os.path.join(os.environ['fsa'], 'TagAndProbe/data/2016/zpt_weights_2016_BtoH.root'),
@@ -27,15 +33,8 @@ class DYCorrection(object):
         self.histopath = mass_pt
         self.correct_by_mass_pt = {}
         self.key = self.file.Get(self.histopath)
-
     def __call__(self, mass, pt):
         self.correct_by_mass_pt = self.key.GetBinContent(self.key.FindFixBin(mass, pt))
         self.error_by_mass_pt = self.key.GetBinError(self.key.FindFixBin(mass, pt))
-        #self.correct_by_mass_pt = {
-        #    '': self.key.GetBinContent(self.key.FindFixBin(mass, pt)),
-        #    'Up': self.key.GetBinContent(self.key.FindFixBin(mass, pt)) + self.key.GetBinError(self.key.FindFixBin(mass, pt)),
-        #    'Down': self.key.GetBinContent(self.key.FindFixBin(mass, pt)) - self.key.GetBinError(self.key.FindFixBin(mass, pt))
-        #    }
-
         return self.correct_by_mass_pt
 

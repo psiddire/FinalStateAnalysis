@@ -21,15 +21,8 @@ class DYCorrection(object):
         self.histopath = mass_pt
         self.correct_by_mass_pt = {}
         self.key = self.file.Get(self.histopath)
-
     def __call__(self, mass, pt):
         self.correct_by_mass_pt = self.key.GetBinContent(self.key.FindFixBin(mass, pt))
         self.error_by_mass_pt = self.key.GetBinError(self.key.FindFixBin(mass, pt))
-        #self.correct_by_mass_pt = {
-        #    '': self.key.GetBinContent(self.key.FindFixBin(mass, pt)),
-        #    'Up': self.key.GetBinContent(self.key.FindFixBin(mass, pt)) + self.key.GetBinError(self.key.FindFixBin(mass, pt)),
-        #    'Down': self.key.GetBinContent(self.key.FindFixBin(mass, pt)) - self.key.GetBinError(self.key.FindFixBin(mass, pt))
-        #    }
-
         return self.correct_by_mass_pt
 

@@ -144,7 +144,7 @@ class Plotter(object):
             elif x=='TT' and tot_int!=0:
                 mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.06) # TTbar x-sec uncertainty
             elif x=='EWK' and tot_int!=0:
-                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.04) # EWK x-sec uncertainty
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.05) # EWK x-sec uncertainty
             elif x=='QCD' and tot_int!=0:
                 mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.30) # QCD uncertainty
             else:
