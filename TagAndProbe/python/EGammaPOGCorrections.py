@@ -116,6 +116,7 @@ class EGammaPOGCorrection(object):
 
     def __call__(self, eta, pt):
         if pt >= 500: pt = 500.
+        if pt < 20: pt = 20.
         self.correct_by_eta_pt = self.key.GetBinContent(self.key.FindFixBin(eta, pt))
         return self.correct_by_eta_pt
 
