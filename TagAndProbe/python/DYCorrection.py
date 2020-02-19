@@ -9,7 +9,7 @@ import ROOT
 
 def make_DYreweight_2018():
     return DYCorrection(
-        os.path.join(os.environ['fsa'], 'TagAndProbe/data/2018/zpt_weights_2018.root'),
+        os.path.join(os.environ['fsa'], 'TagAndProbe/data/2018/zptm_weights_2018_kit.root'),
         "zptmass_histo"   
     )
 

@@ -445,16 +445,16 @@ datadefs["TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
       'x_sec': 88.29,
 }
-datadefs["TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1"] = {
+datadefs["TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext3-v2"] = {
       'analyses' : ['LFV'],
-      'datasetpath' : '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+      'datasetpath' : '/TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext3-v2/MINIAODSIM',
       'pu' : 'upgrade2018',
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
       'x_sec': 365.35,
 }
-datadefs["TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15-v1"] = {
+datadefs["TTToHadronic_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext2-v2"] = {
       'analyses' : ['LFV'],
-      'datasetpath' : '/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM',
+      'datasetpath' : '/TTToHadronic_TuneCP5_13TeV-powheg-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15_ext2-v2/MINIAODSIM',
       'pu' : 'upgrade2018',
       'calibrationTarget' : 'RunIIAutumn18MiniAOD',
       'x_sec': 377.96,

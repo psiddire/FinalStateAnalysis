@@ -307,6 +307,7 @@ class MuonPOGCorrectionTightIso2D_2016(object):
         self.key2 = self.file2.Get(self.histopath2)
     def __call__(self, eta, pt):
         if pt >= 119: pt = 119.
+        if pt < 20. : pt = 20.
         self.correct_by_eta_pt1 = self.key1.GetBinContent(self.key1.FindFixBin(eta, pt))
         self.correct_by_eta_pt2 = self.key2.GetBinContent(self.key2.FindFixBin(eta, pt))
         self.correct_by_eta_pt_weighted = (self.lumi1 * self.correct_by_eta_pt1 + self.lumi2 * self.correct_by_eta_pt2)/(self.lumi1 + self.lumi2)

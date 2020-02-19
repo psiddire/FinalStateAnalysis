@@ -114,6 +114,7 @@ if __name__ == "__main__":
             '--input-file-list=%s' % tmp_input_filelist.name,
             '--input-files-per-job=%i' % args.filesinjob,
             #'--output-dir=%s' % (output_path),
+            '--max-usercode-size=150',
             '--fwklite',
             '--infer-cmssw-path',
             '--output-dag-file=%s/job.dag' % working_dir,
@@ -157,6 +158,7 @@ if __name__ == "__main__":
                 '--output-dag-file=%s/job.dag' % working_dir,
                 '--input-files-per-job=%i' % args.filesinmerge,
                 #'--output-dir=%s' % (output_path),
+                '--max-usercode-size=150',
                 '--infer-cmssw-path',
                 '--merge',
                 '--use-hadd'

@@ -137,6 +137,8 @@ class Plotter(object):
             tot_int = tot_int + mc_hist.Integral()
             hist_int[x] = mc_hist.Integral()
         for x in self.mc_samples:
+            if x!='QCD':
+                mc_err = SystematicsView.add_error(mc_err, 0.02) # Trigger uncertainty
             if x=='DY' and tot_int!=0:
                 mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.04) # DY x-sec uncertainty
             elif x=='Diboson' and tot_int!=0:
@@ -144,9 +146,11 @@ class Plotter(object):
             elif x=='TT' and tot_int!=0:
                 mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.06) # TTbar x-sec uncertainty
             elif x=='EWK' and tot_int!=0:
-                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.05) # EWK x-sec uncertainty
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.04) # EWK x-sec uncertainty
             elif x=='QCD' and tot_int!=0:
                 mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.30) # QCD uncertainty
+            elif x=='embed' and tot_int!=0:
+                mc_err = SystematicsView.add_error(mc_err, (hist_int[x]/tot_int)*0.04) # Embed Selection Trigger uncertainty
             else:
                 mc_err = SystematicsView.add_error(mc_err, 0)
         return mc_err
@@ -556,7 +560,7 @@ class Plotter(object):
 
         signalview = []
         mymax = 0
-        sigscale = 10
+        sigscale = 20
         if signal:
             for sig in signal:
                 signal_view = self.get_view(sig)

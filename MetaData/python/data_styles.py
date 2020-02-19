@@ -24,7 +24,7 @@ data_styles = {
         'linestyle'   : 1,
         'linewidth'   : 4,
         'linecolor'   : '#E42732',
-        'name'        : "GG (B=10%)",
+        'name'        : "GG (B=20%)",
     },
     'VBF_LFV*' : {
         'legendstyle' : 'f',
@@ -34,7 +34,7 @@ data_styles = {
         'linestyle'   : 1,
         'linewidth'   : 4,
         'linecolor'   : '#104E9B',
-        'name'        : "VBF (B=10%)",
+        'name'        : "VBF (B=20%)",
     },
     '*HToTauTau*' : {
         'legendstyle' : 'f',
