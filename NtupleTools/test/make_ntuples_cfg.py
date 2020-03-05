@@ -710,6 +710,7 @@ else:
 
 process.correctMET=cms.Path(process.fullPatMetSequenceModifiedMET)
 process.schedule.append(process.correctMET)
+fs_daughter_inputs['jets'] = 'patSmearedJetsModifiedMET'
 
 #process.puppiNoLep.useExistingWeights = False
 #process.puppi.useExistingWeights = True
@@ -861,22 +862,41 @@ if options.era=="2016":
   from FinalStateAnalysis.NtupleTools.customization_2016metjets import preMETFromJES
   from FinalStateAnalysis.NtupleTools.customization_2016metuesjets import preMETFromUES
 
-fs_daughter_inputs['jets']  = preJets(process,
-                                     fs_daughter_inputs['jets'],
-                                     fs_daughter_inputs['vertices'],
-                                     fs_daughter_inputs['pfmet'], 
-                                     fs_daughter_inputs['muons'],
-                                     fs_daughter_inputs['electrons'],
-                                     doBTag=False,
-                                     doFullJESUnc=options.fullJES,
-                                     runningLocal=options.runningLocal,
-                                     jType="AK4PFchs")
+if options.fullJES and options.metShift:
+   fs_daughter_inputs['jets']  = preJets(process,
+                                         fs_daughter_inputs['jets'],
+                                         'shiftedPatSmearedJetResUpModifiedMET',
+                                         'shiftedPatSmearedJetResDownModifiedMET',
+                                         fs_daughter_inputs['vertices'],
+                                         fs_daughter_inputs['pfmet'],
+                                         fs_daughter_inputs['muons'],
+                                         fs_daughter_inputs['electrons'],
+                                         doBTag=False,
+                                         doFullJESUnc=options.fullJES,
+                                         runningLocal=options.runningLocal,
+                                         jType="AK4PFchs")
+
+else:
+   fs_daughter_inputs['jets']  = preJets(process,
+                                         fs_daughter_inputs['jets'],
+                                         fs_daughter_inputs['jets'],
+                                         fs_daughter_inputs['jets'],
+                                         fs_daughter_inputs['vertices'],
+                                         fs_daughter_inputs['pfmet'], 
+                                         fs_daughter_inputs['muons'],
+                                         fs_daughter_inputs['electrons'],
+                                         doBTag=False,
+                                         doFullJESUnc=options.fullJES,
+                                         runningLocal=options.runningLocal,
+                                         jType="AK4PFchs")
 
 if options.fullJES and options.metShift:
     fs_daughter_inputs['pfmet'] = preMETFromJES(process,
                                                 fs_daughter_inputs['jets'],
                                                 fs_daughter_inputs['vertices'],
                                                 fs_daughter_inputs['pfmet'],
+                                                'patPFMetT1SmearJetResUpModifiedMET',
+                                                'patPFMetT1SmearJetResDownModifiedMET',
                                                 fs_daughter_inputs['muons'],
                                                 fs_daughter_inputs['electrons'],
                                                 doBTag=False,

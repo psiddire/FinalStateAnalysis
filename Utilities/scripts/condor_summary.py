@@ -16,6 +16,7 @@ if len(sys.argv) == 1:
 
 jobid = sys.argv[-1]
 user  = os.environ['USER']
+#user = 'kaho'
 term_rows, term_columns = os.popen('stty size', 'r').read().split()
 term_columns = int(term_columns)
 

@@ -1090,7 +1090,7 @@ datadefs['embedded_EmbeddingRun2018C_ElMuFinalState'] = {
       'analyses' : ['LFV'],
       'calibrationTarget' : 'RunIIAutumn18MiniAOD'
 }
-datadefs['embedded_EmbeddingRun2018D_ElMuTauFinalState'] = {
+datadefs['embedded_EmbeddingRun2018D_ElMuFinalState'] = {
       'datasetpath' : "/EmbeddingRun2018D/ElMuFinalState-inputDoubleMu_102X_miniAOD-v1/USER",
       'x_sec': 1.0,
       'pu' : 'upgrade2018',
