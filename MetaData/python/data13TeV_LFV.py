@@ -496,6 +496,27 @@ datadefs["TT_TuneCUETP8M2T4_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymp
       'calibrationTarget' : 'RunIISummer16MiniAODv3',
       'x_sec': 831.76,
 }
+datadefs["TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec': 88.29,
+}
+datadefs["TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec': 365.35,
+}
+datadefs["TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8_v3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1"] = {
+      'analyses' : ['LFV'],
+      'datasetpath' : '/TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIISummer16MiniAODv3-PUMoriond17_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM',
+      'pu' : 'PUMoriond17',
+      'calibrationTarget' : 'RunIISummer16MiniAODv3',
+      'x_sec': 377.96,
+}
 
 # 2018
 datadefs["ST_tW_antitop_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8_-102X_upgrade2018_realistic_v15_ext1-v1"] = {

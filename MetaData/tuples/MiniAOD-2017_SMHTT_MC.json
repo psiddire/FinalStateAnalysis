@@ -15,6 +15,7 @@
   "TTToSemiLeptonic" : "TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8",
   "TTToHadronic" : "TTToHadronic_TuneCP5_13TeV-powheg-pythia8",
   "TTTo2L2Nu" : "TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8",
+  "TTTo2L2NuPS" : "TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8",
   "GluGluHToTauTau_M125" : "GluGluHToTauTau_M125_13TeV_powheg_pythia8",
   "VBFHToTauTau_M125" : "VBFHToTauTau_M125_13TeV_powheg_pythia8",
   "WplusHToTauTau_M125" : "WplusHToTauTau_M125_13TeV_powheg_pythia8",

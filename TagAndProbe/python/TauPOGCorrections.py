@@ -42,6 +42,7 @@ _DATA_FILES = {
         'tauvsjetdmEMB' : os.path.join(_DATA_DIR_2018, 'TauID_SF_dm_DeepTau2017v2p1VSjet_2018ReReco_EMB.root'),
         'mvadm'         : os.path.join(_DATA_DIR_2018, 'TauID_SF_dm_MVAoldDM2017v2_2018ReReco.root'),
         'es'            : os.path.join(_DATA_DIR_2018, 'TauES_dm_MVAoldDM2017v2_2018ReReco.root'),
+        'tes'           : os.path.join(_DATA_DIR_2018, 'TauES_dm_DeepTau2017v2p1VSjet_2018ReReco.root'),
     },
     '2017' : {
         'tauvse'        : os.path.join(_DATA_DIR_2017, 'TauID_SF_eta_DeepTau2017v2p1VSe_2017ReReco.root'),
@@ -55,6 +56,7 @@ _DATA_FILES = {
         'tauvsjetdmEMB' : os.path.join(_DATA_DIR_2017, 'TauID_SF_dm_DeepTau2017v2p1VSjet_2017ReReco_EMB.root'),
         'mvadm'         : os.path.join(_DATA_DIR_2017, 'TauID_SF_dm_MVAoldDM2017v2_2017ReReco.root'),
         'es'            : os.path.join(_DATA_DIR_2017, 'TauES_dm_MVAoldDM2017v2_2017ReReco.root'),
+        'tes'           : os.path.join(_DATA_DIR_2017, 'TauES_dm_DeepTau2017v2p1VSjet_2017ReReco.root'),
     },
     '2016' : {
         'tauvse'        : os.path.join(_DATA_DIR_2016, 'TauID_SF_eta_DeepTau2017v2p1VSe_2016Legacy.root'),
@@ -68,6 +70,7 @@ _DATA_FILES = {
         'tauvsjetdmEMB' : os.path.join(_DATA_DIR_2016, 'TauID_SF_dm_DeepTau2017v2p1VSjet_2016Legacy_EMB.root'),
         'mvadm'         : os.path.join(_DATA_DIR_2016, 'TauID_SF_dm_MVAoldDM2017v2_2016Legacy.root'),
         'es'            : os.path.join(_DATA_DIR_2016, 'TauES_dm_MVAoldDM2017v2_2016Legacy.root'),
+        'tes'           : os.path.join(_DATA_DIR_2016, 'TauES_dm_DeepTau2017v2p1VSjet_2016Legacy.root'),
     }
 }
 
@@ -116,6 +119,10 @@ def make_tau_pog_ES_2018():
     return ESCorrection(
         _DATA_FILES['2018']['es']
     )
+def make_tau_pog_TES_2018():
+    return ESCorrection(
+        _DATA_FILES['2018']['tes']
+    )
 # 2017
 def make_tau_pog_DeepTauVSe_2017(WP):
     return AgainstCorrection(
@@ -161,6 +168,10 @@ def make_tau_pog_ES_2017():
     return ESCorrection(
         _DATA_FILES['2017']['es']
     )
+def make_tau_pog_TES_2017():
+    return ESCorrection(
+        _DATA_FILES['2017']['tes']
+    )
 # 2016
 def make_tau_pog_DeepTauVSe_2016(WP):
     return AgainstCorrection(
@@ -205,6 +216,10 @@ def make_tau_pog_MVA_dm_2016(WP):
 def make_tau_pog_ES_2016():
     return ESCorrection(
         _DATA_FILES['2016']['es']
+    )
+def make_tau_pog_TES_2016():
+    return ESCorrection(
+        _DATA_FILES['2016']['tes']
     )
 
 # Class ID
@@ -260,6 +275,7 @@ if __name__ == "__main__":
     make_tau_pog_DeepTauVSjet_dm_EMB_2018()
     make_tau_pog_MVA_dm_2018()
     make_tau_pog_ES_2018()
+    make_tau_pog_TES_2018()
     make_tau_pog_DeepTauVSe_2017()
     make_tau_pog_againstElectron_2017()
     make_tau_pog_DeepTauVSmu_2017()
@@ -271,6 +287,7 @@ if __name__ == "__main__":
     make_tau_pog_DeepTauVSjet_dm_EMB_2017()
     make_tau_pog_MVA_dm_2017()
     make_tau_pog_ES_2017()
+    make_tau_pog_TES_2017()
     make_tau_pog_DeepTauVSe_2016()
     make_tau_pog_againstElectron_2016()
     make_tau_pog_DeepTauVSmu_2016()
@@ -282,3 +299,4 @@ if __name__ == "__main__":
     make_tau_pog_DeepTauVSjet_dm_EMB_2016()
     make_tau_pog_MVA_dm_2016()
     make_tau_pog_ES_2016()
+    make_tau_pog_TES_2016()

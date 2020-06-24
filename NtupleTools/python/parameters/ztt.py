@@ -120,6 +120,19 @@ parameters = {
         genMass = 'evt.getGenMass()',
         npNLO = 'evt.npNLO()',
 
+        #sm_weight_nlo='evt.lheweights().at(1080)',
+        #ps_weight_nlo='evt.lheweights().at(1081)',
+        #mm_weight_nlo='evt.lheweights().at(1082)',
+
+        # PythiaWeight_isr_muR0p5='evt.geninfoweights().at(6)',
+        # PythiaWeight_fsr_muR0p5='evt.geninfoweights().at(7)',
+        # PythiaWeight_isr_muR2='evt.geninfoweights().at(8)',
+        # PythiaWeight_fsr_muR2='evt.geninfoweights().at(9)',
+        # PythiaWeight_isr_muR0p25='evt.geninfoweights().at(10)',
+        # PythiaWeight_fsr_muR0p25='evt.geninfoweights().at(11)',
+        # PythiaWeight_isr_muR4='evt.geninfoweights().at(12)',
+        # PythiaWeight_fsr_muR4='evt.geninfoweights().at(13)',
+
         #lheweight0='evt.lheweights().at(0)',
         #lheweight1='evt.lheweights().at(1)',
         #lheweight2='evt.lheweights().at(2)',

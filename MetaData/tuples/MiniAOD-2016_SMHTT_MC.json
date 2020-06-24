@@ -18,6 +18,9 @@
   "W3JetsToLNu_MLM" : "W3JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8",
   "W4JetsToLNu_MLM" : "W4JetsToLNu_TuneCUETP8M1_13TeV-madgraphMLM-pythia8",
   "TTJets" : "TT_TuneCUETP8M2T4_13TeV-powheg-pythia8",
+  "TTToSemiLeptonic" : "TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8",
+  "TTToHadronic" : "TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8",
+  "TTTo2L2Nu" : "TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8",
   "ST_tW_antitop" : "ST_tW_antitop_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1",
   "ST_tW_top" : "ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1",
   "ST_t_top" : "ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1",
@@ -36,4 +39,4 @@
   "ggZH_HToTauTau_ZToNuNu_M125":"ggZH_HToTauTau_ZToQQ_M125_13TeV_powheg_pythia8",
   "ggZH_HToTauTau_ZToLL_M125":"ggZH_HToTauTau_ZToLL_M125_13TeV_powheg_pythia8",
   "GluGluZH_HToWW_M125":"GluGluZH_HToWW_M125_13TeV_powheg_pythia8"
-} 
+}

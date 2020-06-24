@@ -391,9 +391,9 @@ if options.era=="2017":
         sqlitePath = '../data/{0}.db'.format('Fall17_17Nov2017_V32_94X_MC' if options.isMC else 'Fall17_17Nov2017_V32_94X_DATA' )
 
 if options.era=="2016":
-    sqlitePath = '/{0}/src/FinalStateAnalysis/NtupleTools/data/{1}.db'.format(cmsswversion,'Summer16_23Sep2016V4_MC' if options.isMC else 'Summer16_23Sep2016AllV4_DATA')
+    sqlitePath = '/{0}/src/FinalStateAnalysis/NtupleTools/data/{1}.db'.format(cmsswversion,'Summer16_07Aug2017_V11_MC' if options.isMC else 'Summer16_07Aug2017All_V11_DATA')
     if options.runningLocal :
-        sqlitePath = '../data/{0}.db'.format('Summer16_23Sep2016V4_MC' if options.isMC else 'Summer16_23Sep2016AllV4_DATA' )
+        sqlitePath = '../data/{0}.db'.format('Summer16_07Aug2017_V11_MC' if options.isMC else 'Summer16_07Aug2017All_V11_DATA' )
 
 JECtag="JetCorrectorParametersCollection_Autumn18_RunABCD_V19_DATA_AK4PFchs"
 if options.isMC:
@@ -405,9 +405,9 @@ if options.era=="2017":
         JECtag="JetCorrectorParametersCollection_Fall17_17Nov2017_V32_94X_MC_AK4PFchs"
 
 if options.era=="2016":
-    JECtag="JetCorrectorParametersCollection_Summer16_23Sep2016AllV4_DATA_AK4PFchs"
+    JECtag="JetCorrectorParametersCollection_Summer16_07Aug2017All_V11_DATA_AK4PFchs"
     if options.isMC:
-        JECtag="JetCorrectorParametersCollection_Summer16_23Sep2016V4_MC_AK4PFchs"
+        JECtag="JetCorrectorParametersCollection_Summer16_07Aug2017_V11_MC_AK4PFchs"
 
 process.jec = cms.ESSource("PoolDBESSource",
          DBParameters = cms.PSet(messageLevel = cms.untracked.int32(0)),
@@ -520,30 +520,30 @@ if options.htt and (options.isMC or options.isEmbedded):
 ### for simplified template cross section ###
 #############################################
 
-if options.htt and options.isMC :
-    process.load("SimGeneral.HepPDTESSource.pythiapdt_cfi")
-    process.mergedGenParticles = cms.EDProducer("MergedGenParticleProducer",
-        inputPruned = cms.InputTag("prunedGenParticles"),
-        inputPacked = cms.InputTag("packedGenParticles"),
-    )
-    process.myGenerator = cms.EDProducer("GenParticles2HepMCConverter",
-        genParticles = cms.InputTag("mergedGenParticles"),
-        genEventInfo = cms.InputTag("generator"),
-	signalParticlePdgIds = cms.vint32(25),
-    )
-    process.rivetProducerHTXS = cms.EDProducer('HTXSRivetProducer',
-      HepMCCollection = cms.InputTag('myGenerator','unsmeared'),
-      LHERunInfo = cms.InputTag('externalLHEProducer'),
-      ProductionMode = cms.string('AUTO'),
-      #ProductionMode = cms.string('GGF'), # For ggH NNLOPS sample
-    )
+# if options.htt and options.isMC :
+#     process.load("SimGeneral.HepPDTESSource.pythiapdt_cfi")
+#     process.mergedGenParticles = cms.EDProducer("MergedGenParticleProducer",
+#         inputPruned = cms.InputTag("prunedGenParticles"),
+#         inputPacked = cms.InputTag("packedGenParticles"),
+#     )
+#     process.myGenerator = cms.EDProducer("GenParticles2HepMCConverter",
+#         genParticles = cms.InputTag("mergedGenParticles"),
+#         genEventInfo = cms.InputTag("generator"),
+# 	signalParticlePdgIds = cms.vint32(25),
+#     )
+#     process.rivetProducerHTXS = cms.EDProducer('HTXSRivetProducer',
+#       HepMCCollection = cms.InputTag('myGenerator','unsmeared'),
+#       LHERunInfo = cms.InputTag('externalLHEProducer'),
+#       ProductionMode = cms.string('AUTO'),
+#       #ProductionMode = cms.string('GGF'), # For ggH NNLOPS sample
+#     )
     
-    process.rivetMethods = cms.Path(
-        process.mergedGenParticles
-        * process.myGenerator
-        * process.rivetProducerHTXS
-    )
-    process.schedule.append( process.rivetMethods )
+#     process.rivetMethods = cms.Path(
+#         process.mergedGenParticles
+#         * process.myGenerator
+#         * process.rivetProducerHTXS
+#     )
+#     process.schedule.append( process.rivetMethods )
 
 ################################################
 ### add filters (that wont make it into fsa) ###

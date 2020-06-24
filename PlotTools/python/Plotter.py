@@ -228,7 +228,7 @@ class Plotter(object):
         if year=='2016':
             lumi = 35.9
         elif year=='2017':
-            lumi = 41.8
+            lumi = 41.5
         elif year=='2018':
             lumi = 59.3
         data_text = (lumiformat + " fb^{-1}") % (lumi)
