@@ -134,6 +134,52 @@ std::vector<double> computeBInfo(
   return output;
 }
 
+struct order_by_deepcsv{
+  inline bool operator() (const reco::Candidate* struct1, const reco::Candidate* struct2)
+  {
+    return ((dynamic_cast<const pat::Jet*>(struct1)->bDiscriminator("pfDeepCSVJetTags:probb") + dynamic_cast<const pat::Jet*>(struct1)->bDiscriminator("pfDeepCSVJetTags:probbb")) > (dynamic_cast<const pat::Jet*>(struct2)->bDiscriminator("pfDeepCSVJetTags:probb") + dynamic_cast<const pat::Jet*>(struct2)->bDiscriminator("pfDeepCSVJetTags:probbb")));
+  }
+};
+
+std::vector<double> computeDeepCSVJetInfo(
+					  const std::vector<const reco::Candidate*>& jets) {
+  std::vector<double> output;
+
+  std::vector<const reco::Candidate*> deepcsvorderedjets=jets;
+  std::sort(deepcsvorderedjets.begin(), deepcsvorderedjets.end(), order_by_deepcsv());
+
+  int num_deepcsv_Jets = deepcsvorderedjets.size();
+  if (num_deepcsv_Jets == 0) {
+    for (int i = 0; i < 12; ++i) {
+      output.push_back( -9999 );
+    }
+  }
+  if (num_deepcsv_Jets >= 1) {
+    const pat::Jet * jet1Pat = dynamic_cast<const pat::Jet*> (deepcsvorderedjets[0]);
+    output.push_back( deepcsvorderedjets[0]->pt() );
+    output.push_back( deepcsvorderedjets[0]->eta() );
+    output.push_back( deepcsvorderedjets[0]->phi() );
+    output.push_back( deepcsvorderedjets[0]->mass() );
+    output.push_back( jet1Pat->bDiscriminator("pfDeepCSVJetTags:probb") + jet1Pat->bDiscriminator("pfDeepCSVJetTags:probbb") );
+    output.push_back( jet1Pat->hadronFlavour() );
+  }
+  if (num_deepcsv_Jets >= 2) {
+    const pat::Jet * jet1Pat = dynamic_cast<const pat::Jet*> (deepcsvorderedjets[1]);
+    output.push_back( deepcsvorderedjets[1]->pt() );
+    output.push_back( deepcsvorderedjets[1]->eta() );
+    output.push_back( deepcsvorderedjets[1]->phi() );
+    output.push_back( deepcsvorderedjets[1]->mass() );
+    output.push_back( jet1Pat->bDiscriminator("pfDeepCSVJetTags:probb") + jet1Pat->bDiscriminator("pfDeepCSVJetTags:probbb") );
+    output.push_back( jet1Pat->hadronFlavour() );
+  }
+  if (num_deepcsv_Jets == 1) {
+    for (int i = 6; i < 12; ++i) {
+      output.push_back( -9999 );
+    }
+  }
+  return output;
+}
+
 //JetVariables computeJetInfo(
 std::vector<double> computeJetInfo(
     const std::vector<const reco::Candidate*>& jets) {
@@ -154,9 +200,8 @@ std::vector<double> computeJetInfo(
     output.push_back( jets[0]->pt() );
     output.push_back( jets[0]->eta() );
     output.push_back( jets[0]->phi() );
-    output.push_back( jet1Pat->bDiscriminator("pfCombinedInclusiveSecondaryVertexV2BJetTags") );
+    output.push_back( jet1Pat->bDiscriminator("pfDeepCSVJetTags:probb") + jet1Pat->bDiscriminator("pfDeepCSVJetTags:probbb") );
     output.push_back( jet1Pat->userFloat("pileupJetId:fullDiscriminant"));
-    //output.push_back( jet1Pat->userFloat("pileupJetIdUpdated:fullDiscriminant"));
     output.push_back( jet1Pat->partonFlavour() );
     output.push_back( jet1Pat->hadronFlavour() );
     output.push_back( jet1Pat->jecFactor("Uncorrected") );
@@ -176,9 +221,8 @@ std::vector<double> computeJetInfo(
       output.push_back( jets[i]->pt() );
       output.push_back( jets[i]->eta() );
       output.push_back( jets[i]->phi() );
-      output.push_back( jetPat->bDiscriminator("pfCombinedInclusiveSecondaryVertexV2BJetTags") );
+      output.push_back( jetPat->bDiscriminator("pfDeepCSVJetTags:probb") + jetPat->bDiscriminator("pfDeepCSVJetTags:probbb"));
       output.push_back( jetPat->userFloat("pileupJetId:fullDiscriminant"));
-      //output.push_back( jetPat->userFloat("pileupJetIdUpdated:fullDiscriminant"));
       output.push_back( jetPat->partonFlavour() );
       output.push_back( jetPat->hadronFlavour() );
       output.push_back( jetPat->jecFactor("Uncorrected") );

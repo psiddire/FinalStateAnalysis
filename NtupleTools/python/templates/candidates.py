@@ -11,11 +11,9 @@ from FinalStateAnalysis.Utilities.cfgtools import PSet
 kinematics = PSet(
     objectPt = '{object}.pt',
     objectEta = '{object}.eta',
-    #objectAbsEta = 'abs({object}.eta)',
     objectPhi = '{object}.phi',
     objectCharge = '{object}.charge',
     objectMass = '{object}.mass',
-    #objectRank ='{object}.userFloat("rankByPt")'
 )
 
 vertex_info = PSet(
@@ -26,7 +24,6 @@ vertex_info = PSet(
     objectPVDZ = 'getPVDZ({object_idx})',
     objectPVDXY = 'getPVDXY({object_idx})',
     objectSIP2D = 'getIP2D({object_idx}) / getIP2DErr({object_idx})',
-#    objectPVAssociation = '{object}.fromPV', # 0->used in PV fit, 1->PV is closest VTX, 2->other VTX is closest, 3->used in other VTX fit
 )
 
 # The info about the associated pat::Jet
@@ -47,18 +44,6 @@ base_jet = PSet(
         '{object}.userCand("patJet").phiphiMoment() : -5',
     objectJetArea = '? {object}.userCand("patJet").isNonnull ? '
         '{object}.userCand("patJet").jetArea() : -5',
-    #objectJetptD  =   '? {object}.userCand("patJet").isNonnull ? '
-    #'jetVariables({object_idx}, "ptD") : -100',
-    #objectJetaxis1  =   '? {object}.userCand("patJet").isNonnull ? '
-    #'jetVariables({object_idx},"axis1") : -100 ',
-    #objectJetaxis2  =   '? {object}.userCand("patJet").isNonnull ? '
-    #'jetVariables({object_idx},"axis2") : -100',
-    #objectJetmult  =   '? {object}.userCand("patJet").isNonnull ? '
-    #'jetVariables({object_idx},"mult") : -100',
-    #objectJetmultMLPQC  =   '? {object}.userCand("patJet").isNonnull ? '
-    #'jetVariables({object_idx},"mult_MLP_QC") : -100 ',
-    #objectJetmultMLP    =   '? {object}.userCand("patJet").isNonnull ? '
-    #'jetVariables({object_idx},"mult_MLP") : -100',
     objectJetPartonFlavour = '? {object}.userCand("patJet").isNonnull ? '
         '{object}.userCand("patJet").partonFlavour : -100',
     objectJetHadronFlavour = '? {object}.userCand("patJet").isNonnull ? '

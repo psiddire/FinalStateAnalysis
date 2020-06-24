@@ -16,17 +16,10 @@ from FinalStateAnalysis.Utilities.cfgtools import PSet
 
 # ID and isolation
 id = PSet(
-    #objectCBIDVeto = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-veto")',
-    #objectCBIDLoose = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-loose")',
-    #objectCBIDMedium = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-medium")',
-    #objectCBIDTight = '{object}.electronID("cutBasedElectronID-Fall17-94X-V2-tight")',
     objectMVAIsoWP80 = '{object}.electronID("mvaEleID-Fall17-iso-V2-wp80")',
     objectMVAIsoWP90 = '{object}.electronID("mvaEleID-Fall17-iso-V2-wp90")',
-    #objectMVAIsoWPHZZ = '{object}.electronID("mvaEleID-Fall17-iso-V2-wpHZZ")',
-    #objectMVAIsoWPLoose = '{object}.electronID("mvaEleID-Fall17-iso-V2-wpLoose")',
     objectMVANoisoWP80 = '{object}.electronID("mvaEleID-Fall17-noIso-V2-wp80")',
     objectMVANoisoWP90 = '{object}.electronID("mvaEleID-Fall17-noIso-V2-wp90")',
-    #objectMVANoisoWPLoose = '{object}.electronID("mvaEleID-Fall17-noIso-V2-wpLoose")',
     objectCorrectedEt = '{object}.userFloat("ecalTrkEnergyPostCorr")',
     objectEnergyScaleDown = '{object}.userFloat("energyScaleDown")',
     objectEnergyScaleUp = '{object}.userFloat("energyScaleUp")',
@@ -43,13 +36,6 @@ id = PSet(
     objectEnergySigmaRhoDown = '{object}.userFloat("energySigmaRhoDown")',
     objectEnergySigmaRhoUp = '{object}.userFloat("energySigmaRhoUp")',
 
-    objectRelPFIsoDB = cms.string(
-        "({object}.userIsolation('PfChargedHadronIso')"
-        "+max({object}.userIsolation('PfNeutralHadronIso')"
-        "+{object}.userIsolation('PfGammaIso')"
-        "-0.5*{object}.userIsolation('PfPUChargedHadronIso'),0.0))"
-        "/{object}.pt()"
-    ),
     objectRelPFIsoRho = cms.string(
         '({object}.pfIsolationVariables().sumChargedHadronPt'
         '+max(0.0,{object}.pfIsolationVariables().sumNeutralHadronEt'
@@ -61,41 +47,10 @@ id = PSet(
     # Number of matched conversions
     objectPassesConversionVeto = '{object}.passConversionVeto()',
 
-    objectPFChargedIso = cms.string('{object}.userIsolation("PfChargedHadronIso")'),
-    objectPFNeutralIso = cms.string('{object}.userIsolation("PfNeutralHadronIso")'),
-    objectPFPhotonIso  = cms.string('{object}.userIsolation("PfGammaIso")'),
-    objectPFPUChargedIso = cms.string('{object}.userIsolation("PfPUChargedHadronIso")'),
-
-    #objectEffectiveArea2012Data = cms.string('{object}.userFloat("ea_comb_Data2012_iso04_kt6PFJ")'),
-    #objectEffectiveAreaSpring15 = cms.string('{object}.userFloat("EffectiveArea")'),
-
-    objectRho = cms.string('{object}.userFloat("rho_fastjet")'),
-    objectRelIso = cms.string("({object}.dr03TkSumPt()"
-               "+max({object}.dr03EcalRecHitSumEt()-1.0,0.0)"
-               "+{object}.dr03HcalTowerSumEt())/{object}.pt()"),
-    objectTrkIsoDR03 = cms.string("{object}.dr03TkSumPt()"),
-    objectEcalIsoDR03 = cms.string("{object}.dr03EcalRecHitSumEt()"),
-    objectHcalIsoDR03 = cms.string("{object}.dr03HcalTowerSumEt()"),
-    objectChargeIdTight = '{object}.isGsfCtfScPixChargeConsistent',
-    objectChargeIdMed = '{object}.isGsfScPixChargeConsistent',
-    objectChargeIdLoose = '{object}.isGsfCtfChargeConsistent',
     # raw energy error
     objectEnergyError = '{object}.corrections().combinedP4Error',
     # shower shape / ID variables
-    #objectHadronicOverEM = '{object}.hcalOverEcal',
-    #objectHadronicDepth1OverEm = '{object}.hcalDepth1OverEcal',
-    #objectHadronicDepth2OverEm = '{object}.hcalDepth2OverEcal',
-    #objectSigmaIEtaIEta = '{object}.sigmaIetaIeta',
-    #objectdeltaEtaSuperClusterTrackAtVtx = '{object}.deltaEtaSuperClusterTrackAtVtx',
-    #objectdeltaPhiSuperClusterTrackAtVtx = '{object}.deltaPhiSuperClusterTrackAtVtx',
-    #objectfBrem = '{object}.fbrem',
-    #objecteSuperClusterOverP = '{object}.eSuperClusterOverP',
     objectecalEnergy = '{object}.ecalEnergy',
-    #objecttrackMomentumAtVtxP = '{object}.trackMomentumAtVtx.r',
-    #objectE1x5 = '{object}.scE1x5',
-    #objectE2x5Max = '{object}.scE2x5Max',
-    #objectE5x5 = '{object}.scE5x5',
-    objectNearMuonVeto = 'overlapMuons({object_idx},0.05,"isGlobalMuon() & abs(eta()) < 2.4").size()',
     # Gen Info
     objectGenMotherPdgId = '? (getDaughterGenParticleMotherSmart({object_idx}, 11, 0).isAvailable && getDaughterGenParticleMotherSmart({object_idx}, 11, 0).isNonnull) ? getDaughterGenParticleMotherSmart({object_idx}, 11, 0).pdgId() : -999',
     objectComesFromHiggs = 'comesFromHiggs({object_idx}, 11, 1)',
@@ -112,12 +67,6 @@ id = PSet(
     objectGenTauDecay       = '? (getDaughterGenParticle({object_idx}, 11, 0).isAvailable && getDaughterGenParticle({object_idx}, 11, 0).isNonnull) ? getDaughterGenParticle({object_idx}, 11, 0).statusFlags().isTauDecayProduct() : -999',
     objectGenPrompt       = '? (getDaughterGenParticle({object_idx}, 11, 0).isAvailable && getDaughterGenParticle({object_idx}, 11, 0).isNonnull) ? getDaughterGenParticle({object_idx}, 11, 0).statusFlags().isPrompt() : -999',
 
-    # How close is the nearest muon passing some basic quality cuts?
-    objectNearestMuonDR = "electronClosestMuonDR({object_idx})",
-    # closest Z mass
-    objectNearestZMass = 'closestZElectron({object_idx},"")',
-    # lowest invariant mass
-    objectLowestMll = 'smallestMee({object_idx},"")',
 )
 
 energyCorrections = PSet(
@@ -131,13 +80,6 @@ tracking = PSet(
 
 # Information about the matched supercluster
 supercluster = PSet(
-    #objectSCEta = '{object}.superCluster().eta',
-    #objectSCPhi = '{object}.superCluster().phi',
-    #objectSCEnergy = '{object}.superCluster().energy',
-    #objectSCRawEnergy = '{object}.superCluster().rawEnergy',
-    #objectSCPreshowerEnergy = '{object}.superCluster().preshowerEnergy',
-    #objectSCPhiWidth = '{object}.superCluster().phiWidth',
-    #objectSCEtaWidth = '{object}.superCluster().etaWidth'   
 )
 
 trigger_50ns = PSet(

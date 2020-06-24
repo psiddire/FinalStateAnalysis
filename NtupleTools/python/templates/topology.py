@@ -17,28 +17,11 @@ shiftedMtToMET = PSet()
 
 # Variables based on pairs of objects
 pairs = PSet(
-    object1_object2_Mass = 'subcand({object1_idx}, {object2_idx}).get.mass',
-    #object1_object2_Mt = 'subcand({object1_idx}, {object2_idx}).get.mt',
-    #object1_object2_Pt = 'subcand({object1_idx}, {object2_idx}).get.pt',
-    #object1_object2_Eta = 'subcand({object1_idx}, {object2_idx}).get.eta',
-    #object1_object2_Phi = 'subcand({object1_idx}, {object2_idx}).get.phi',
-    object1_object2_DR = 'dR({object1_idx}, {object2_idx})',
-    #object1_object2_DPhi = 'dPhi({object1_idx}, {object2_idx})',
-    #object1_object2_SS = 'likeSigned({object1_idx}, {object2_idx})',
     object1_object2_PZeta = 'pZeta({object1_idx}, {object2_idx})',
     object1_object2_PZetaVis = 'pZetaVis({object1_idx}, {object2_idx})',
-    #object1_object2_CosThetaStar = 'abs(subcand({object1_idx}, {object2_idx}).get.daughterCosThetaStar(0))',
-
-    ##Pairs + MET
-    #object1_object2_ToMETDPhi_Ty1 = 'twoParticleDeltaPhiToMEt({object1_idx}, {object2_idx}, "type1")',
 )
 
 svfit = PSet(
-    #object1_object2_SVfitMass = 'SVfit({object1_idx},{object2_idx}).at(0)',
-    #object1_object2_SVfitPt = 'SVfit({object1_idx},{object2_idx}).at(1)',
-    #object1_object2_SVfitEta = 'SVfit({object1_idx},{object2_idx}).at(2)',
-    #object1_object2_SVfitPhi = 'SVfit({object1_idx},{object2_idx}).at(3)',
-    #object1_object2_SVfitMET = 'SVfit({object1_idx},{object2_idx}).at(4)',
 )
 
 finalstate = PSet(

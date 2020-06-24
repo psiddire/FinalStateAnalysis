@@ -1,7 +1,7 @@
 /*
  * Implementation of the various Jet selections used in the H2Tau analysis
  *
- * Authors: truggles 
+ * Authors: truggles
  *
  */
 
@@ -12,6 +12,8 @@
 #include "DataFormats/Candidate/interface/Candidate.h"
 
 std::vector<double> computeJetInfo(
+    const std::vector<const reco::Candidate*>& jets);
+std::vector<double> computeDeepCSVJetInfo(
     const std::vector<const reco::Candidate*>& jets);
 std::vector<double> computeBInfo(
     const std::vector<const reco::Candidate*>& jets);
