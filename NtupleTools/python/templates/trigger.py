@@ -23,22 +23,6 @@ _trig_template = PSet(
 
 singleLepton_25ns_MC = PSet(
     _trig_template.replace(
-        name='singleIsoTkMu22',
-        paths=r'HLT_IsoTkMu22_v\\d+'
-        ),
-    _trig_template.replace(
-        name='singleIsoTkMu22eta2p1',
-        paths=r'HLT_IsoTkMu22_eta2p1_v\\d+'
-        ),
-    _trig_template.replace(
-        name='singleIsoMu22',
-        paths=r'HLT_IsoMu22_v\\d+'
-        ),
-    _trig_template.replace(
-        name='singleIsoMu22eta2p1',
-        paths=r'HLT_IsoMu22_eta2p1_v\\d+'
-        ),
-    _trig_template.replace(
         name='IsoMu24',
         paths=r'HLT_IsoMu24_v\\d+'
         ),
@@ -69,22 +53,6 @@ singleLepton_25ns_MC = PSet(
     )
 
 singleLepton_25ns = PSet(
-    _trig_template.replace(
-        name='singleIsoTkMu22',
-        paths=r'HLT_IsoTkMu22_v\\d+'
-        ),
-    _trig_template.replace(
-        name='singleIsoTkMu22eta2p1',
-        paths=r'HLT_IsoTkMu22_eta2p1_v\\d+'
-        ),
-    _trig_template.replace(
-        name='singleIsoMu22',
-        paths=r'HLT_IsoMu22_v\\d+'
-        ),
-    _trig_template.replace(
-        name='singleIsoMu22eta2p1',
-        paths=r'HLT_IsoMu22_eta2p1_v\\d+'
-        ),
     _trig_template.replace(
         name='IsoMu24',
         paths=r'HLT_IsoMu24_v\\d+'
@@ -155,30 +123,6 @@ doubleLepton_25ns = PSet(
     _trig_template.replace(
         name='Ele24LooseHPSTau30TightID',
         paths=r'HLT_Ele24_eta2p1_WPTight_Gsf_LooseChargedIsoPFTauHPS30_eta2p1_TightID_CrossL1_v\\d+'
-        ),
-    _trig_template.replace(
-        name='Mu20LooseTau27',
-        paths=r'HLT_IsoMu20_eta2p1_LooseChargedIsoPFTau27_eta2p1_CrossL1_v\\d+'
-        ),
-    _trig_template.replace(
-        name='Mu20LooseTau27TightID',
-        paths=r'HLT_IsoMu20_eta2p1_LooseChargedIsoPFTau27_eta2p1_TightID_CrossL1_v\\d+'
-        ),
-    _trig_template.replace(
-        name='Mu20LooseHPSTau27',
-        paths=r'HLT_IsoMu20_eta2p1_LooseChargedIsoPFTauHPS27_eta2p1_CrossL1_v\\d+'
-        ),
-    _trig_template.replace(
-        name='Mu20LooseHPSTau27TightID',
-        paths=r'HLT_IsoMu20_eta2p1_LooseChargedIsoPFTauHPS27_eta2p1_TightID_CrossL1_v\\d+'
-        ),
-    _trig_template.replace(
-        name='singleMu19eta2p1LooseTau20singleL1',
-        paths=r'HLT_IsoMu19_eta2p1_LooseIsoPFTau20_SingleL1_v\\d+'
-        ),
-    _trig_template.replace(
-        name='singleMu19eta2p1LooseTau20',
-        paths=r'HLT_IsoMu19_eta2p1_LooseIsoPFTau20_v\\d+'
         ),
     )
 
